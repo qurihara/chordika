@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja" data-lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chordika — a 12-key deck of chord-whistle cards</title>
+<meta name="description" content="Chordika is a deck of card-sized, 3D-printed chord whistles. Blow three adjacent pipes and a tuned triad sounds; slide across the card to play chord progressions. Twelve cards cover every key.">
+<style>
+  :root{
+    --bg:#faf9f7; --panel:#ffffff; --ink:#1f2430; --muted:#5c6472; --line:#e7e4de;
+    --accent:#d982c0;
+    --c-ii:#63c2a6; --c-IV:#f2864b; --c-vi:#7b8fc4; --c-I:#d982c0; --c-iii:#9ec54a; --c-V:#f5c518;
+    --shadow:0 10px 30px rgba(30,36,48,.08);
+    --radius:18px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#14161c; --panel:#1c1f27; --ink:#eef0f4; --muted:#a3acbd; --line:#2b303b; --shadow:0 12px 34px rgba(0,0,0,.35); }
+  }
+  :root[data-theme="dark"]{ --bg:#14161c; --panel:#1c1f27; --ink:#eef0f4; --muted:#a3acbd; --line:#2b303b; --shadow:0 12px 34px rgba(0,0,0,.35); }
+  :root[data-theme="light"]{ --bg:#faf9f7; --panel:#ffffff; --ink:#1f2430; --muted:#5c6472; --line:#e7e4de; --shadow:0 10px 30px rgba(30,36,48,.08); }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Noto Sans JP",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+  .wrap{ max-width:960px; margin:0 auto; padding:0 22px; }
+  section{ padding:64px 0; border-top:1px solid var(--line); }
+  h2{ font-size:1.7rem; letter-spacing:.01em; margin:0 0 6px; }
+  h3{ font-size:1.05rem; margin:0 0 6px; }
+  p{ margin:.5em 0; color:var(--ink); }
+  .muted{ color:var(--muted); }
+  .lead{ font-size:1.12rem; color:var(--muted); }
+
+  /* top bar */
+  .bar{ position:sticky; top:0; z-index:20; backdrop-filter:saturate(1.4) blur(10px);
+    background:color-mix(in srgb, var(--bg) 82%, transparent); border-bottom:1px solid var(--line); }
+  .bar .wrap{ display:flex; align-items:center; justify-content:space-between; height:58px; }
+  .brand{ font-weight:700; letter-spacing:.02em; display:flex; align-items:center; gap:8px; }
+  .brand .dot{ width:12px; height:12px; border-radius:50%;
+    background:conic-gradient(var(--c-ii),var(--c-IV),var(--c-vi),var(--c-I),var(--c-iii),var(--c-V),var(--c-ii)); }
+  .toggle{ display:flex; gap:4px; background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:3px; }
+  .toggle button{ border:0; background:transparent; color:var(--muted); font:inherit; font-size:.85rem;
+    padding:4px 12px; border-radius:999px; cursor:pointer; }
+  .toggle button[aria-pressed="true"]{ background:var(--ink); color:var(--bg); }
+
+  /* hero */
+  .hero{ text-align:center; padding:80px 0 60px; border-top:0; }
+  .hero .kbd{ display:inline-block; font-size:.8rem; color:var(--muted); border:1px solid var(--line);
+    border-radius:999px; padding:4px 14px; margin-bottom:22px; }
+  .logo{ font-size:clamp(3rem,10vw,6rem); font-weight:800; letter-spacing:-.02em; line-height:1; margin:0;
+    background:linear-gradient(92deg,var(--c-vi),var(--c-I),var(--c-IV));
+    -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero .tag{ font-size:1.2rem; margin-top:16px; color:var(--ink); }
+  .hero .sub{ max-width:640px; margin:14px auto 0; color:var(--muted); }
+  .pipes{ display:flex; gap:8px; justify-content:center; align-items:flex-end; height:96px; margin:34px 0 4px; }
+  .pipes i{ width:34px; border-radius:8px 8px 3px 3px; display:block; box-shadow:var(--shadow); }
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:26px; }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); }
+  .card .n{ display:inline-flex; width:30px; height:30px; align-items:center; justify-content:center; border-radius:9px;
+    font-weight:700; color:#fff; margin-bottom:10px; }
+
+  /* chord strip */
+  .strip{ display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 6px; }
+  .chip{ flex:1 1 120px; border-radius:12px; padding:12px 10px; text-align:center; color:#15181f; box-shadow:var(--shadow); }
+  .chip b{ display:block; font-size:1.15rem; }
+  .chip span{ font-size:.85rem; opacity:.8; }
+
+  figure{ margin:26px 0 0; }
+  figure img{ width:100%; height:auto; border-radius:14px; border:1px solid var(--line); box-shadow:var(--shadow); background:#fff; }
+  figcaption{ color:var(--muted); font-size:.9rem; margin-top:10px; text-align:center; }
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media (max-width:640px){ .two{ grid-template-columns:1fr; } }
+
+  .note{ background:color-mix(in srgb,var(--c-ii) 12%, var(--panel)); border:1px solid color-mix(in srgb,var(--c-ii) 40%, var(--line));
+    border-radius:14px; padding:16px 18px; }
+  .warn{ background:color-mix(in srgb,var(--c-IV) 12%, var(--panel)); border:1px solid color-mix(in srgb,var(--c-IV) 40%, var(--line));
+    border-radius:14px; padding:16px 18px; }
+
+  ul.clean{ padding-left:1.15em; margin:.4em 0; }
+  ul.clean li{ margin:.3em 0; }
+
+  .roadmap li{ margin:.4em 0; }
+  .tagpill{ font-size:.72rem; border:1px solid var(--line); border-radius:999px; padding:2px 9px; color:var(--muted); margin-right:6px; }
+
+  footer{ padding:44px 0 70px; border-top:1px solid var(--line); color:var(--muted); font-size:.92rem; text-align:center; }
+  footer a{ text-decoration:none; border-bottom:1px solid var(--line); }
+
+  [data-when]{ display:none; }
+  :root[data-lang="ja"] [data-when="ja"]{ display:revert; }
+  :root[data-lang="en"] [data-when="en"]{ display:revert; }
+  /* keep grid/flex display for containers when shown */
+  :root[data-lang="ja"] .strip[data-when="ja"], :root[data-lang="en"] .strip[data-when="en"]{ display:flex; }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> Chordika</div>
+    <div class="toggle" role="group" aria-label="language">
+      <button id="btn-ja" aria-pressed="true" onclick="setLang('ja')">日本語</button>
+      <button id="btn-en" aria-pressed="false" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kbd">3D-printed · card-sized · acoustic</span>
+    <h1 class="logo">Chordika</h1>
+    <div class="tag">a 12-key deck of chord-whistle cards</div>
+    <p class="sub" data-when="ja">クレジットカード大の3Dプリント笛。隣り合う3本を同時に吹くと、調律された三和音が鳴ります。カードの上で口を横にすべらせるだけで、コード進行が生まれます。12枚で全ての調をまかないます。</p>
+    <p class="sub" data-when="en">A credit-card-sized 3D-printed whistle. Blow three adjacent pipes at once and a tuned triad sounds. Slide your mouth along the card and chord progressions appear. Twelve cards cover every key.</p>
+    <div class="pipes" aria-hidden="true">
+      <i style="height:62px;background:var(--c-ii)"></i>
+      <i style="height:78px;background:var(--c-IV)"></i>
+      <i style="height:52px;background:var(--c-vi)"></i>
+      <i style="height:92px;background:var(--c-I)"></i>
+      <i style="height:70px;background:var(--c-iii)"></i>
+      <i style="height:84px;background:var(--c-V)"></i>
+    </div>
+    <p class="muted" style="font-size:.85rem" data-when="ja">歌口はすべて同じ辺にそろい、そこを吹きます</p>
+    <p class="muted" style="font-size:.85rem" data-when="en">All mouthpieces align on one edge — you blow there</p>
+  </div>
+</header>
+
+<section id="what">
+  <div class="wrap">
+    <h2 data-when="ja">これは何？</h2>
+    <h2 data-when="en">What is it?</h2>
+    <p class="lead" data-when="ja">1枚＝1調のカードです。8本のフィッポル笛（リコーダーと同じ発音のしくみ）が並び、隣り合う3本を一息で吹くと、その調の協和三和音が鳴ります。</p>
+    <p class="lead" data-when="en">Each card is one key. Eight fipple pipes (the same voicing as a recorder) sit side by side; blow any three adjacent pipes in one breath and a consonant triad of that key sounds.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="n" style="background:var(--c-I)">♪</span>
+        <h3 data-when="ja">同時に和音</h3><h3 data-when="en">Chords, not beats</h3>
+        <p class="muted" data-when="ja">大音量のうなりや過吹きではなく、きちんと調律された三和音が同時に鳴ります。</p>
+        <p class="muted" data-when="en">Not a loud beating or over-blown effect — a properly tuned triad, sounded together.</p>
+      </div>
+      <div class="card">
+        <span class="n" style="background:var(--c-vi)">↔</span>
+        <h3 data-when="ja">すべって進行</h3><h3 data-when="en">Slide to progress</h3>
+        <p class="muted" data-when="ja">口を横に1つずらすと隣の和音へ。定番のコード進行がそのまま吹けます。</p>
+        <p class="muted" data-when="en">Shift one pipe over for the next chord. Common progressions play directly.</p>
+      </div>
+      <div class="card">
+        <span class="n" style="background:var(--c-IV)">⌗</span>
+        <h3 data-when="ja">12枚で全調</h3><h3 data-when="en">12 keys, one motion</h3>
+        <p class="muted" data-when="ja">位置と運指は全カード共通。持ち替えるだけで移調できます。</p>
+        <p class="muted" data-when="en">Positions and fingering are identical on every card. Swap the card to transpose.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2 data-when="ja">しくみ</h2>
+    <h2 data-when="en">How it works</h2>
+    <p data-when="ja">8本の笛は「3度ずつ積み上げた音の列」です。隣り合う3本を切り取ると、必ずダイアトニックの三和音になります。C/Am のカードなら、足側から次の6和音が並びます（＊＝主音トニック I）。</p>
+    <p data-when="en">The eight pipes are a stack of thirds. Any three neighbours form a diatonic triad. On the C/Am card, sliding from the foot edge gives these six chords (＊ = tonic I).</p>
+    <div class="strip">
+      <div class="chip" style="background:var(--c-ii)"><b>Dm</b><span>ii · pos 1</span></div>
+      <div class="chip" style="background:var(--c-IV)"><b>F</b><span>IV · pos 2</span></div>
+      <div class="chip" style="background:var(--c-vi)"><b>Am</b><span>vi · pos 3</span></div>
+      <div class="chip" style="background:var(--c-I)"><b>C ＊</b><span>I · pos 4</span></div>
+      <div class="chip" style="background:var(--c-iii)"><b>Em</b><span>iii · pos 5</span></div>
+      <div class="chip" style="background:var(--c-V)"><b>G</b><span>V · pos 6</span></div>
+    </div>
+    <div class="note" style="margin-top:18px">
+      <p style="margin:0" data-when="ja"><b>効きどころ：</b>メジャーの主要三和音（C・F・G）が、それぞれ平行短調（Am・Dm・Em）の隣にあります。だから1枚でメジャーと平行短調を地続きに行き来できます。</p>
+      <p style="margin:0" data-when="en"><b>The trick:</b> each primary major triad (C, F, G) sits right next to its relative minor (Am, Dm, Em). One card moves between a major key and its relative minor with the smallest slide.</p>
+    </div>
+    <figure class="two">
+      <div><img src="assets/chord_map_C_Am.png" alt="C / Am chord map"></div>
+      <div><img src="assets/chord_map_G_Em.png" alt="G / Em chord map"></div>
+    </figure>
+    <figcaption data-when="ja">どの3本がどの和音になるか（左：C/Am、右：G/Em）。棒の高さ＝笛の長さ＝音の高さ。</figcaption>
+    <figcaption data-when="en">Which three pipes make which chord (left: C/Am, right: G/Em). Bar height = pipe length = pitch.</figcaption>
+  </div>
+</section>
+
+<section id="cheatsheet">
+  <div class="wrap">
+    <h2 data-when="ja">コード進行 早見表</h2>
+    <h2 data-when="en">Chord progression cheat sheet</h2>
+    <p class="muted" data-when="ja">王道進行・ポップ進行・ジャズ終止など、定番の進行を位置番号と実際の和音で示したデッキ同梱シートです。</p>
+    <p class="muted" data-when="en">The deck insert: common progressions (royal road, pop, jazz cadence, and more) shown by position number and actual chord.</p>
+    <figure>
+      <img data-when="ja" src="assets/cheatsheet_ja.png" alt="Chordika コード進行 早見表（日本語）">
+      <img data-when="en" src="assets/cheatsheet_en.png" alt="Chordika chord progression cheat sheet (English)">
+    </figure>
+  </div>
+</section>
+
+<section id="access">
+  <div class="wrap">
+    <h2 data-when="ja">だれでも触れる設計</h2>
+    <h2 data-when="en">Designed to be touchable</h2>
+    <ul class="clean">
+      <li data-when="ja"><b>調の切り欠き：</b>カードの足側の辺に、調ごとに位置の違う切り欠きを1つ。触れるだけでどの調かの見当がつきます。</li>
+      <li data-when="en"><b>Key notch:</b> a single notch on the foot edge, at a different position per key — feel which key you're holding.</li>
+      <li data-when="ja"><b>主音マーカー：</b>「ド」（主音）の笛の先に印。全カードで同じ行なので、そこを吹けばトニックです。</li>
+      <li data-when="en"><b>Tonic marker:</b> a mark by the tonic pipe, on the same row across every card — blow there for the tonic.</li>
+      <li data-when="ja"><b>ステンシル刻印：</b>調性名（例 C / Am）を貫通穴で刻印。</li>
+      <li data-when="en"><b>Stencil label:</b> the key name (e.g. C / Am) cut as through-holes.</li>
+    </ul>
+    <div class="warn" style="margin-top:18px">
+      <p style="margin:0" data-when="ja"><b>正直な限界：</b>減三和音（vii°）は無し。平行短調は自然的短音階の範囲。和声的短調のドミナントは白鍵に無く出せません（本物のダイアトニック・ハーモニカと同じ制約です）。</p>
+      <p style="margin:0" data-when="en"><b>Honest limits:</b> no diminished (vii°). The relative minor stays natural-minor; the harmonic-minor dominant isn't available (the same constraint as a real diatonic harmonica).</p>
+    </div>
+  </div>
+</section>
+
+<section id="status">
+  <div class="wrap">
+    <h2 data-when="ja">いまの状態とこれから</h2>
+    <h2 data-when="en">Status &amp; roadmap</h2>
+    <ul class="clean roadmap">
+      <li data-when="ja"><span class="tagpill">done</span>全12調＋表紙を3Dプリントで実機化（クレジットカード大・触覚の切り欠き付き）。</li>
+      <li data-when="en"><span class="tagpill">done</span>All 12 keys plus a cover, 3D-printed and working (card-sized, with the tactile notch).</li>
+      <li data-when="ja"><span class="tagpill">done</span>コード進行チートシートと各調の対応図。</li>
+      <li data-when="en"><span class="tagpill">done</span>Chord-progression cheat sheet and per-key chord maps.</li>
+      <li data-when="ja"><span class="tagpill">next</span>印刷用のSTL／3MFデータの公開（このページで順次充実させます）。</li>
+      <li data-when="en"><span class="tagpill">next</span>Printable STL / 3MF data (to be added here over time).</li>
+      <li data-when="ja"><span class="tagpill">idea</span>ヘッド違いで音域を広げた「剛体移調」デッキ。</li>
+      <li data-when="en"><span class="tagpill">idea</span>A rigid-transposition deck using different head sizes for a wider range.</li>
+    </ul>
+    <p class="muted" data-when="ja">※このページは紹介が目的で、STLなどの印刷データはまだ置いていません。今後ここに追加していきます。</p>
+    <p class="muted" data-when="en">This page is an introduction; print data (STL, etc.) isn't posted yet and will be added here later.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Chordika — a 12-key deck of chord-whistle cards</p>
+    <p class="muted" data-when="ja">「AI笛作り」プロジェクトより。作者：栗原一貴</p>
+    <p class="muted" data-when="en">From the “AI whistle-making” project. By Kazutaka Kurihara.</p>
+  </div>
+</footer>
+
+<script>
+  function setLang(l){
+    document.documentElement.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l==='ja'?'ja':'en');
+    document.getElementById('btn-ja').setAttribute('aria-pressed', l==='ja');
+    document.getElementById('btn-en').setAttribute('aria-pressed', l==='en');
+    try{ localStorage.setItem('chordika-lang', l); }catch(e){}
+  }
+  (function(){
+    var saved; try{ saved = localStorage.getItem('chordika-lang'); }catch(e){}
+    if(!saved){ saved = (navigator.language||'').toLowerCase().startsWith('ja') ? 'ja' : 'en'; }
+    setLang(saved);
+  })();
+</script>
+</body>
+</html>
