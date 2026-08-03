@@ -252,6 +252,11 @@
   <div class="wrap">
     <h2 data-when="ja">ダウンロードして印刷する</h2>
     <h2 data-when="en">Download and print</h2>
+    <figure style="margin:18px 0 6px">
+      <img src="assets/overview_pair.png" alt="Top view of the two cards, showing the bores inside">
+      <figcaption data-when="ja">刷るとこうなります。青く見えているのが中の共鳴管で、この長さが音の高さを決めます。</figcaption>
+      <figcaption data-when="en">What you get. The blue shapes are the bores inside — their length sets the pitch.</figcaption>
+    </figure>
     <p data-when="ja">印刷データはすべて <b><a href="https://github.com/qurihara/chordika">GitHub リポジトリ qurihara/chordika</a></b> で公開しています。<b>STL</b>（13枚）と、<b>Bambu Lab A1 mini 用のスライス済み 3mf</b>（同じ13枚・PLA）の両方があります。<b>個人で印刷して使う</b>のは自由です（ライセンスは下記）。</p>
     <p data-when="en">All print data is published in the <b><a href="https://github.com/qurihara/chordika">GitHub repository qurihara/chordika</a></b>: <b>STL</b> files for all thirteen cards, and <b>pre-sliced 3mf</b> files for the Bambu Lab A1 mini (PLA). You are free to <b>print them for your own personal use</b> (see the licence below).</p>
 
@@ -354,62 +359,6 @@
       <figure><img src="assets/chord_map_Eb_Cm.png" alt="Eb / Cm"><figcaption>E♭ / Cm</figcaption></figure>
       <figure><img src="assets/chord_map_Bb_Gm.png" alt="Bb / Gm"><figcaption>B♭ / Gm</figcaption></figure>
       <figure><img src="assets/chord_map_F_Dm.png" alt="F / Dm"><figcaption>F / Dm</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<section id="how">
-  <div class="wrap">
-    <h2 data-when="ja">どうやって作ったか</h2>
-    <h2 data-when="en">How it was made</h2>
-    <figure style="margin-top:8px">
-      <img src="assets/overview_pair.png" alt="Top view of the two cards, showing the bores inside">
-      <figcaption data-when="ja">真上から見た図。左が Recorika、右が Chordika。青く見えているのが中の共鳴管で、この長さが音の高さを決めます。</figcaption>
-      <figcaption data-when="en">Seen from above: Recorika on the left, Chordika on the right. The blue shapes are the bores inside — their length sets the pitch.</figcaption>
-    </figure>
-    <div class="grid" style="margin-top:26px">
-      <div class="card">
-        <span class="n" style="background:var(--c-ii)">1</span>
-        <h3 data-when="ja">管の長さを式にする</h3>
-        <h3 data-when="en">Turn pipe length into a formula</h3>
-        <p class="muted" data-when="ja">実際に刷って吹いた結果から、管長 L と周波数 f の関係を <code>f = A/(L+e)</code> で近似しました。これを逆に解けば、欲しい音から管長が決まります。</p>
-        <p class="muted" data-when="en">Printing and blowing real pipes gave a fit of <code>f = A/(L+e)</code> between length and frequency. Solve it backwards and a wanted note becomes a length.</p>
-      </div>
-      <div class="card">
-        <span class="n" style="background:var(--c-IV)">2</span>
-        <h3 data-when="ja">生成器がカードを吐く</h3>
-        <h3 data-when="en">A generator emits the card</h3>
-        <p class="muted" data-when="ja">Python（trimesh と manifold3d）で管を8本並べ、板と融合します。調を渡すだけで 3D モデルが出るので、12調ぶんを人手で設計せずに済みました。</p>
-        <p class="muted" data-when="en">Python (trimesh and manifold3d) lays out eight pipes and fuses them into the plate. Hand off a key, get a model — no hand-designing twelve of them.</p>
-      </div>
-      <div class="card">
-        <span class="n" style="background:var(--c-vi)">3</span>
-        <h3 data-when="ja">板は 0.5 mm でなければならない</h3>
-        <h3 data-when="en">The plate must be 0.5 mm</h3>
-        <p class="muted" data-when="ja">板の厚みは笛の床とぴったり同じ値です。ここを厚くすると共鳴管を侵食して、まったく鳴らなくなります。総厚は 4 mm。</p>
-        <p class="muted" data-when="en">The plate thickness exactly matches the floor of the pipes. Any thicker and it eats into the bore, and the card goes silent. Total thickness 4 mm.</p>
-      </div>
-      <div class="card">
-        <span class="n" style="background:var(--c-I)">4</span>
-        <h3 data-when="ja">度数を並べ替える</h3>
-        <h3 data-when="en">Reorder the degrees</h3>
-        <p class="muted" data-when="ja">音を 2・4・6・1・3・5・7・2 の度数順に並べると、隣り合う3本が常に三和音になります。これが「位置＝和音」を全カードで共通にしている仕掛けです。</p>
-        <p class="muted" data-when="en">Ordering the notes by scale degree 2·4·6·1·3·5·7·2 makes every three adjacent pipes a triad. That is what keeps position-equals-chord true on every card.</p>
-      </div>
-      <div class="card">
-        <span class="n" style="background:var(--c-iii)">5</span>
-        <h3 data-when="ja">吹いて測って戻す</h3>
-        <h3 data-when="en">Blow, measure, correct</h3>
-        <p class="muted" data-when="ja">刷ったカードを吹いて周波数を実測し、設計値との差から較正をやり直します。この循環でデッキ全体をピッチに乗せました。</p>
-        <p class="muted" data-when="en">Blow the printed card, measure the pitch, compare with the design, refit the calibration. That loop is what brought the whole deck into tune.</p>
-      </div>
-      <div class="card">
-        <span class="n" style="background:var(--c-V)">6</span>
-        <h3 data-when="ja">反りとの戦い</h3>
-        <h3 data-when="en">Fighting the warp</h3>
-        <p class="muted" data-when="ja">1プレートに2枚並べると必ず反りました。1層あたりの時間が倍になり、端が冷えて縮むためです。1枚ずつ刷るのが答えでした。</p>
-        <p class="muted" data-when="en">Two cards on a plate always warped: the time per layer doubles and the edges cool and shrink. Printing one at a time was the answer.</p>
-      </div>
     </div>
   </div>
 </section>
