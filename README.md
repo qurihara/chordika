@@ -12,7 +12,7 @@ Eight fipple pipes are 3D-printed into a credit-card-sized plate (85.6 × 54 × 
 - **Recorika** — the scale counterpart: one octave of a major scale, lowest pipe on the
   left, highest on the right.
 
-No batteries, no sensors. Just plastic with holes in it.
+The data is published, so anyone with a 3D printer can make the same thing. Each card is exactly credit-card sized, so it travels in a wallet or a card case.
 
 ![The twelve Chordika cards](assets/photo_chordika_deck.jpg)
 
