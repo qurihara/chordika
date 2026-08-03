@@ -38,8 +38,8 @@ by pitch — which makes every three adjacent pipes a diatonic triad.
 
 ```
 index.html          project site (Japanese / English)
-stl/                print data — 12 Chordika cards + 1 Recorika card
-3mf/                pre-sliced files for the Bambu Lab A1 mini (PLA), same 13 cards
+stl/                print data — 12 Chordika cards, 1 Recorika card, 1 cover, 2 box parts
+3mf/                pre-sliced files for the Bambu Lab A1 mini (PLA), the same 16 items
 video/              short clips of the cards being played
 assets/             cheat sheets (JA/EN), chord maps for all 12 keys, photos and figures
 ```
@@ -63,6 +63,20 @@ filament, slice the STL yourself using the settings below.
 - White PLA works well. Translucent PETG is beautiful — the bores show through the plate.
 
 Blow with about as much breath as a recorder. Too hard and the pipe jumps an octave.
+
+## Cover card and box
+
+The **cover** (`chordika_cover.stl`) is a 0.5 mm plate with no pipes and "Chordika" cut
+through it. It shares the cards' outline and strap-hole position, so it stacks on top of
+the twelve and threads onto the same cord.
+
+The **box** is two parts: an open tray (`chordika_box_base.stl`) and a lid that slips over
+its outside (`chordika_box_lid.stl`). All thirteen cards lie flat inside, and the lid
+carries the same cut-through lettering as the cover. A scallop on each long side lets you
+pinch a card out. Closed, it is about 94 × 62 × 57 mm.
+
+The box holds no pipes, so it prints at **ordinary 0.2 mm layers with no supports** — no
+need for the fine settings the cards require.
 
 ## How it was designed
 
