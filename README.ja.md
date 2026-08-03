@@ -14,6 +14,8 @@ For English, see [README.md](README.md).
 
 電池もセンサーもありません。プラスチックの板に穴が開いているだけです。
 
+![Chordika 12枚](assets/photo_chordika_deck.jpg)
+
 **紹介サイト: https://unryu.org/chordika/**
 
 ## 並びのしくみ
@@ -38,7 +40,7 @@ vii°（減三和音）だけです。
 index.html          紹介サイト（日本語・英語）
 stl/                印刷データ — Chordika 12枚 ＋ Recorika 1枚
 3mf/                Bambu Lab A1 mini 用のスライス済みファイル（PLA）、同じ13枚
-assets/             早見表（日英）、12調ぶんの対応表、俯瞰図
+assets/             早見表（日英）、12調ぶんの対応表、写真と図版
 ```
 
 **Bambu Lab A1 mini** をお使いなら、`3mf/` のファイルは下記の設定ですでにスライスして
