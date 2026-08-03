@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chordika — a 12-key deck of chord-whistle cards</title>
-<meta name="description" content="Chordika is a deck of card-sized, 3D-printed chord whistles. Blow three adjacent pipes and a tuned triad sounds; slide across the card to play chord progressions. Twelve cards cover every key.">
+<title>Chordika &amp; Recorika — 3D-printed card-sized whistles</title>
+<meta name="description" content="Chordika is a 12-key deck of card-sized 3D-printed chord whistles: blow three adjacent pipes and a tuned triad sounds. Recorika is its scale counterpart, one octave from left to right. STL files are free to download for personal printing.">
 <style>
   :root{
     --bg:#faf9f7; --panel:#ffffff; --ink:#1f2430; --muted:#5c6472; --line:#e7e4de;
     --accent:#d982c0;
     --c-ii:#63c2a6; --c-IV:#f2864b; --c-vi:#7b8fc4; --c-I:#d982c0; --c-iii:#9ec54a; --c-V:#f5c518;
+    --c-rec:#a97bd6;
     --shadow:0 10px 30px rgba(30,36,48,.08);
     --radius:18px;
   }
@@ -35,7 +36,6 @@
   .muted{ color:var(--muted); }
   .lead{ font-size:1.12rem; color:var(--muted); }
 
-  /* top bar */
   .bar{ position:sticky; top:0; z-index:20; backdrop-filter:saturate(1.4) blur(10px);
     background:color-mix(in srgb, var(--bg) 82%, transparent); border-bottom:1px solid var(--line); }
   .bar .wrap{ display:flex; align-items:center; justify-content:space-between; height:58px; }
@@ -47,24 +47,23 @@
     padding:4px 12px; border-radius:999px; cursor:pointer; }
   .toggle button[aria-pressed="true"]{ background:var(--ink); color:var(--bg); }
 
-  /* hero */
-  .hero{ text-align:center; padding:80px 0 60px; border-top:0; }
+  .hero{ text-align:center; padding:76px 0 56px; border-top:0; }
   .hero .kbd{ display:inline-block; font-size:.8rem; color:var(--muted); border:1px solid var(--line);
     border-radius:999px; padding:4px 14px; margin-bottom:22px; }
-  .logo{ font-size:clamp(3rem,10vw,6rem); font-weight:800; letter-spacing:-.02em; line-height:1; margin:0;
+  .logo{ font-size:clamp(2.3rem,7.5vw,4.4rem); font-weight:800; letter-spacing:-.02em; line-height:1.08; margin:0;
     background:linear-gradient(92deg,var(--c-vi),var(--c-I),var(--c-IV));
     -webkit-background-clip:text; background-clip:text; color:transparent; }
-  .hero .tag{ font-size:1.2rem; margin-top:16px; color:var(--ink); }
-  .hero .sub{ max-width:640px; margin:14px auto 0; color:var(--muted); }
+  .logo .amp{ -webkit-text-fill-color:var(--muted); font-weight:400; font-size:.5em; vertical-align:.18em; padding:0 .12em; }
+  .hero .tag{ font-size:1.15rem; margin-top:16px; color:var(--ink); }
+  .hero .sub{ max-width:660px; margin:14px auto 0; color:var(--muted); }
   .pipes{ display:flex; gap:8px; justify-content:center; align-items:flex-end; height:96px; margin:34px 0 4px; }
-  .pipes i{ width:34px; border-radius:8px 8px 3px 3px; display:block; box-shadow:var(--shadow); }
+  .pipes i{ width:30px; border-radius:8px 8px 3px 3px; display:block; box-shadow:var(--shadow); }
 
   .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:26px; }
   .card{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); }
   .card .n{ display:inline-flex; width:30px; height:30px; align-items:center; justify-content:center; border-radius:9px;
     font-weight:700; color:#fff; margin-bottom:10px; }
 
-  /* chord strip */
   .strip{ display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 6px; }
   .chip{ flex:1 1 120px; border-radius:12px; padding:12px 10px; text-align:center; color:#15181f; box-shadow:var(--shadow); }
   .chip b{ display:block; font-size:1.15rem; }
@@ -84,8 +83,22 @@
   ul.clean{ padding-left:1.15em; margin:.4em 0; }
   ul.clean li{ margin:.3em 0; }
 
-  .roadmap li{ margin:.4em 0; }
-  .tagpill{ font-size:.72rem; border:1px solid var(--line); border-radius:999px; padding:2px 9px; color:var(--muted); margin-right:6px; }
+  table.tbl{ width:100%; border-collapse:collapse; margin:18px 0 4px; font-size:.94rem; }
+  table.tbl th, table.tbl td{ border:1px solid var(--line); padding:8px 10px; text-align:center; }
+  table.tbl th{ background:color-mix(in srgb,var(--ink) 5%, var(--panel)); font-weight:600; }
+  table.tbl td.hi{ background:color-mix(in srgb,var(--c-I) 18%, var(--panel)); font-weight:700; }
+  .scroller{ overflow-x:auto; }
+
+  .dl{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:18px 0 6px; }
+  .dl a{ display:block; text-align:center; text-decoration:none; background:var(--panel); border:1px solid var(--line);
+    border-radius:12px; padding:11px 8px; box-shadow:var(--shadow); font-weight:600; font-size:.95rem; }
+  .dl a:hover{ border-color:var(--c-I); }
+  .dl a small{ display:block; font-weight:400; color:var(--muted); font-size:.78rem; }
+  .dl.rec a{ border-color:color-mix(in srgb,var(--c-rec) 55%, var(--line)); }
+
+  .maps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin-top:20px; }
+  .maps figure{ margin:0; }
+  .maps figcaption{ font-size:.82rem; margin-top:6px; }
 
   footer{ padding:44px 0 70px; border-top:1px solid var(--line); color:var(--muted); font-size:.92rem; text-align:center; }
   footer a{ text-decoration:none; border-bottom:1px solid var(--line); }
@@ -93,15 +106,16 @@
   [data-when]{ display:none; }
   :root[data-lang="ja"] [data-when="ja"]{ display:revert; }
   :root[data-lang="en"] [data-when="en"]{ display:revert; }
-  /* keep grid/flex display for containers when shown */
   :root[data-lang="ja"] .strip[data-when="ja"], :root[data-lang="en"] .strip[data-when="en"]{ display:flex; }
+  :root[data-lang="ja"] .grid[data-when="ja"], :root[data-lang="en"] .grid[data-when="en"]{ display:grid; }
+  :root[data-lang="ja"] .dl[data-when="ja"], :root[data-lang="en"] .dl[data-when="en"]{ display:grid; }
 </style>
 </head>
 <body>
 
 <div class="bar">
   <div class="wrap">
-    <div class="brand"><span class="dot"></span> Chordika</div>
+    <div class="brand"><span class="dot"></span> Chordika &amp; Recorika</div>
     <div class="toggle" role="group" aria-label="language">
       <button id="btn-ja" aria-pressed="true" onclick="setLang('ja')">日本語</button>
       <button id="btn-en" aria-pressed="false" onclick="setLang('en')">EN</button>
@@ -111,152 +125,319 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="kbd">3D-printed · card-sized · acoustic</span>
-    <h1 class="logo">Chordika</h1>
-    <div class="tag">a 12-key deck of chord-whistle cards</div>
-    <p class="sub" data-when="ja">クレジットカード大の3Dプリント笛。隣り合う3本を同時に吹くと、調律された三和音が鳴ります。カードの上で口を横にすべらせるだけで、コード進行が生まれます。12枚で全ての調をまかないます。</p>
-    <p class="sub" data-when="en">A credit-card-sized 3D-printed whistle. Blow three adjacent pipes at once and a tuned triad sounds. Slide your mouth along the card and chord progressions appear. Twelve cards cover every key.</p>
+    <span class="kbd">3D-printed · card-sized · no batteries</span>
+    <h1 class="logo">Chordika<span class="amp">&amp;</span>Recorika</h1>
+    <div class="tag" data-when="ja">和音のカードと、音階のカード</div>
+    <div class="tag" data-when="en">A chord card, and a scale card</div>
+    <p class="sub" data-when="ja">クレジットカード大の板に、8本の笛を3Dプリントで融合しました。<b>Chordika</b> は隣り合う3本を同時に吹くと三和音が鳴るカードで、12枚で全ての調をまかないます。<b>Recorika</b> はその対になる音階のカードで、左から右へ1オクターブが並びます。電池もセンサーもありません。</p>
+    <p class="sub" data-when="en">Eight fipple pipes, 3D-printed into a credit-card-sized plate. <b>Chordika</b> sounds a tuned triad when you blow three adjacent pipes in one breath, and twelve cards cover every key. <b>Recorika</b> is its scale counterpart: one octave, low on the left, high on the right. No batteries, no sensors.</p>
     <div class="pipes" aria-hidden="true">
-      <i style="height:62px;background:var(--c-ii)"></i>
-      <i style="height:78px;background:var(--c-IV)"></i>
-      <i style="height:52px;background:var(--c-vi)"></i>
-      <i style="height:92px;background:var(--c-I)"></i>
-      <i style="height:70px;background:var(--c-iii)"></i>
-      <i style="height:84px;background:var(--c-V)"></i>
+      <i style="height:88px;background:var(--c-ii)"></i>
+      <i style="height:80px;background:var(--c-IV)"></i>
+      <i style="height:72px;background:var(--c-vi)"></i>
+      <i style="height:64px;background:var(--c-I)"></i>
+      <i style="height:57px;background:var(--c-iii)"></i>
+      <i style="height:50px;background:var(--c-V)"></i>
+      <i style="height:44px;background:var(--c-rec)"></i>
+      <i style="height:39px;background:var(--c-ii)"></i>
     </div>
-    <p class="muted" style="font-size:.85rem" data-when="ja">歌口はすべて同じ辺にそろい、そこを吹きます</p>
-    <p class="muted" style="font-size:.85rem" data-when="en">All mouthpieces align on one edge — you blow there</p>
+    <figure>
+      <img src="assets/overview_pair.png" alt="Recorika and Chordika seen from above">
+      <figcaption data-when="ja">左が Recorika（音階）、右が Chordika（和音）。どちらも 85.6 × 54 × 4 mm。</figcaption>
+      <figcaption data-when="en">Recorika (scale) on the left, Chordika (chords) on the right. Both are 85.6 × 54 × 4 mm.</figcaption>
+    </figure>
   </div>
 </header>
 
-<section id="what">
+<section id="chordika">
   <div class="wrap">
-    <h2 data-when="ja">これは何？</h2>
-    <h2 data-when="en">What is it?</h2>
-    <p class="lead" data-when="ja">1枚＝1調のカードです。8本のフィッポル笛（リコーダーと同じ発音のしくみ）が並び、隣り合う3本を一息で吹くと、その調の協和三和音が鳴ります。</p>
-    <p class="lead" data-when="en">Each card is one key. Eight fipple pipes (the same voicing as a recorder) sit side by side; blow any three adjacent pipes in one breath and a consonant triad of that key sounds.</p>
-    <div class="grid">
-      <div class="card">
-        <span class="n" style="background:var(--c-I)">♪</span>
-        <h3 data-when="ja">同時に和音</h3><h3 data-when="en">Chords, not beats</h3>
-        <p class="muted" data-when="ja">大音量のうなりや過吹きではなく、きちんと調律された三和音が同時に鳴ります。</p>
-        <p class="muted" data-when="en">Not a loud beating or over-blown effect — a properly tuned triad, sounded together.</p>
-      </div>
-      <div class="card">
-        <span class="n" style="background:var(--c-vi)">↔</span>
-        <h3 data-when="ja">すべって進行</h3><h3 data-when="en">Slide to progress</h3>
-        <p class="muted" data-when="ja">口を横に1つずらすと隣の和音へ。定番のコード進行がそのまま吹けます。</p>
-        <p class="muted" data-when="en">Shift one pipe over for the next chord. Common progressions play directly.</p>
-      </div>
-      <div class="card">
-        <span class="n" style="background:var(--c-IV)">⌗</span>
-        <h3 data-when="ja">12枚で全調</h3><h3 data-when="en">12 keys, one motion</h3>
-        <p class="muted" data-when="ja">位置と運指は全カード共通。持ち替えるだけで移調できます。</p>
-        <p class="muted" data-when="en">Positions and fingering are identical on every card. Swap the card to transpose.</p>
-      </div>
+    <h2 data-when="ja">Chordika — 持ち替えるだけで移調できる</h2>
+    <h2 data-when="en">Chordika — swap a card, change the key</h2>
+    <p class="lead" data-when="ja">1枚のカードで6つの和音が鳴ります。そして<b>位置と和音の対応が12枚すべてで同じ</b>です。</p>
+    <p class="lead" data-when="en">One card gives you six chords — and <b>the position-to-chord mapping is identical on all twelve cards</b>.</p>
+
+    <div class="strip" data-when="ja">
+      <div class="chip" style="background:var(--c-ii)"><b>ii</b><span>1・2・3</span></div>
+      <div class="chip" style="background:var(--c-IV)"><b>IV</b><span>2・3・4</span></div>
+      <div class="chip" style="background:var(--c-vi)"><b>vi</b><span>3・4・5</span></div>
+      <div class="chip" style="background:var(--c-I)"><b>I</b><span>4・5・6</span></div>
+      <div class="chip" style="background:var(--c-iii)"><b>iii</b><span>5・6・7</span></div>
+      <div class="chip" style="background:var(--c-V)"><b>V</b><span>6・7・8</span></div>
+    </div>
+    <div class="strip" data-when="en">
+      <div class="chip" style="background:var(--c-ii)"><b>ii</b><span>pipes 1-3</span></div>
+      <div class="chip" style="background:var(--c-IV)"><b>IV</b><span>pipes 2-4</span></div>
+      <div class="chip" style="background:var(--c-vi)"><b>vi</b><span>pipes 3-5</span></div>
+      <div class="chip" style="background:var(--c-I)"><b>I</b><span>pipes 4-6</span></div>
+      <div class="chip" style="background:var(--c-iii)"><b>iii</b><span>pipes 5-7</span></div>
+      <div class="chip" style="background:var(--c-V)"><b>V</b><span>pipes 6-8</span></div>
+    </div>
+
+    <p data-when="ja">つまり<b>同じ手の動きのまま、カードを持ち替えるだけで移調できます</b>。C/Am のカードで「4・5・6 → 2・3・4 → 6・7・8」と吹けば C → F → G。まったく同じ動きを G/Em のカードでやれば G → C → D です。運指を覚え直す必要がありません。</p>
+    <p data-when="en">So <b>the same hand motion transposes when you swap the card</b>. On the C/Am card, "4-5-6 → 2-3-4 → 6-7-8" plays C → F → G. The very same motion on the G/Em card plays G → C → D. Nothing to relearn.</p>
+
+    <div class="scroller">
+      <table class="tbl">
+        <thead>
+          <tr><th data-when="ja">吹く位置</th><th data-when="en">Pipes</th>
+              <th>1·2·3</th><th>2·3·4</th><th>3·4·5</th><th>4·5·6</th><th>5·6·7</th><th>6·7·8</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>C / Am</th><td>Dm</td><td>F</td><td>Am</td><td class="hi">C</td><td>Em</td><td>G</td></tr>
+          <tr><th>G / Em</th><td>Am</td><td>C</td><td>Em</td><td class="hi">G</td><td>Bm</td><td>D</td></tr>
+          <tr><th>F / Dm</th><td>Gm</td><td>B♭</td><td>Dm</td><td class="hi">F</td><td>Am</td><td>C</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted" data-when="ja">1枚に I・IV・V の主要三和音と ii・iii・vi が入ります。つまり<b>長調とその平行短調の和音がひと通り</b>そろいます。欠けるのは vii°（減三和音）だけです。</p>
+    <p class="muted" data-when="en">Each card carries the primary triads I, IV, V plus ii, iii and vi — <b>a major key and its relative minor in one card</b>. Only vii° (the diminished triad) is missing.</p>
+
+    <figure>
+      <img src="assets/overview_12keys.png" alt="All twelve Chordika cards">
+      <figcaption data-when="ja">12枚で全調。管の長さだけが違い、並びの意味は共通です。</figcaption>
+      <figcaption data-when="en">Twelve cards, every key. Only the pipe lengths differ; the layout means the same thing on all of them.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="recorika">
+  <div class="wrap">
+    <h2 data-when="ja">Recorika — ドレミが1オクターブ</h2>
+    <h2 data-when="en">Recorika — one octave, do to do</h2>
+    <p class="lead" data-when="ja">左端が最低音、右へ行くほど高くなり、順に吹くと長音階が1オクターブ鳴ります。</p>
+    <p class="lead" data-when="en">Lowest pipe on the left, highest on the right. Blow them in order and a major scale rises through one octave.</p>
+    <p data-when="ja">和音の Chordika に対する、音階の Recorika です。名前は recorder（リコーダー）から来ています。読みは「リコリカ」、Chordika は「コーディカ」です。</p>
+    <p data-when="en">Recorika is the scale counterpart to Chordika's chords. The name comes from "recorder".</p>
+    <div class="note" data-when="ja">
+      <b>なぜ A♭ メジャーなのか。</b>1オクターブには根音から数えて13半音ぶんの幅が要ります。この笛が安定して鳴る音域は14半音ぶんしかないので、根音に置ける音は3つだけでした。A♭ を選ぶと最長管が Chordika と同じ 64.2 mm に収まり、8本のうち7本は Chordika で実績のある管長そのままになります。ドを C にすると最高音が 4186 Hz となり、音域を大きく外れます。
+    </div>
+    <div class="note" data-when="en">
+      <b>Why A♭ major?</b> An octave spans thirteen semitones from the root, and the reliable range of these pipes is only fourteen — so only three roots were possible. A♭ keeps the longest pipe at 64.2 mm, the same as Chordika's longest, and seven of the eight pipe lengths are ones Chordika already proved. Starting on C would put the top note at 4186 Hz, far outside the range.
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <h2 data-when="ja">ダウンロードして印刷する</h2>
+    <h2 data-when="en">Download and print</h2>
+    <p data-when="ja">STL ファイルを置いてあります。<b>個人で印刷して使う</b>のは自由です（ライセンスは下記）。</p>
+    <p data-when="en">The STL files are here. You are free to <b>print them for your own personal use</b> (see the licence below).</p>
+
+    <h3 data-when="ja">Chordika（12調）</h3>
+    <h3 data-when="en">Chordika (12 keys)</h3>
+    <div class="dl">
+      <a href="stl/chordika_C_Am.stl">C / Am<small>chordika_C_Am.stl</small></a>
+      <a href="stl/chordika_G_Em.stl">G / Em<small>chordika_G_Em.stl</small></a>
+      <a href="stl/chordika_D_Bm.stl">D / Bm<small>chordika_D_Bm.stl</small></a>
+      <a href="stl/chordika_A_Fsm.stl">A / F#m<small>chordika_A_Fsm.stl</small></a>
+      <a href="stl/chordika_E_Csm.stl">E / C#m<small>chordika_E_Csm.stl</small></a>
+      <a href="stl/chordika_B_Gsm.stl">B / G#m<small>chordika_B_Gsm.stl</small></a>
+      <a href="stl/chordika_Fs_Dsm.stl">F# / D#m<small>chordika_Fs_Dsm.stl</small></a>
+      <a href="stl/chordika_Db_Bbm.stl">D♭ / B♭m<small>chordika_Db_Bbm.stl</small></a>
+      <a href="stl/chordika_Ab_Fm.stl">A♭ / Fm<small>chordika_Ab_Fm.stl</small></a>
+      <a href="stl/chordika_Eb_Cm.stl">E♭ / Cm<small>chordika_Eb_Cm.stl</small></a>
+      <a href="stl/chordika_Bb_Gm.stl">B♭ / Gm<small>chordika_Bb_Gm.stl</small></a>
+      <a href="stl/chordika_F_Dm.stl">F / Dm<small>chordika_F_Dm.stl</small></a>
+    </div>
+
+    <h3 data-when="ja">Recorika（音階）</h3>
+    <h3 data-when="en">Recorika (scale)</h3>
+    <div class="dl rec">
+      <a href="stl/recorika_Ab.stl">A♭ major<small>recorika_Ab.stl</small></a>
+    </div>
+
+    <h3 style="margin-top:26px" data-when="ja">印刷の設定</h3>
+    <h3 style="margin-top:26px" data-when="en">Print settings</h3>
+    <ul class="clean" data-when="ja">
+      <li><b>層の高さ 0.08 mm、外壁の線幅 0.5 mm。</b>笛の壁が薄いので、ここは粗くしないでください。</li>
+      <li><b>サポートは不要です。</b>そのまま平置きで刷れます。</li>
+      <li><b>1枚ずつ刷ってください。</b>1プレートに2枚並べると、1層あたりの時間が倍になってカードの端が反ります。ブリムを付けても止まりません。</li>
+      <li><b>ブリムは 5 mm 程度</b>付けると安定します。隙間（brim gap）は 0 にしてください。隙間を空けるとブリムが本体に融着せず、押さえの役目を果たしません。</li>
+      <li>白い PLA で良好な結果が出ています。透明の PETG も美しく、中の共鳴管が透けて見えます。</li>
+    </ul>
+    <ul class="clean" data-when="en">
+      <li><b>0.08 mm layers, 0.5 mm outer wall.</b> The pipe walls are thin — do not print this coarse.</li>
+      <li><b>No supports needed.</b> Print flat, as-is.</li>
+      <li><b>One card per plate.</b> Two cards on one plate double the time per layer, and the card edges curl. A brim alone will not stop it.</li>
+      <li><b>Use a brim of about 5 mm</b>, with a brim-to-object gap of <b>0</b>. With a gap the brim never fuses to the part and holds nothing.</li>
+      <li>White PLA works well. Translucent PETG is beautiful too — you can see the bores through the plate.</li>
+    </ul>
+
+    <div class="warn" style="margin-top:20px" data-when="ja">
+      <b>吹きかた。</b>口をすぼめ、リコーダーと同じくらいの息で。強く吹きすぎると1オクターブ上に飛びます。和音を出すときは、隣り合う3本にまたがるように口を当てて、一息で吹きます。
+    </div>
+    <div class="warn" style="margin-top:20px" data-when="en">
+      <b>How to blow.</b> Purse your lips and use about as much breath as a recorder. Blow too hard and the pipe jumps an octave. For a chord, cover three adjacent pipes with your mouth and blow them in one breath.
+    </div>
+  </div>
+</section>
+
+<section id="cheatsheet">
+  <div class="wrap">
+    <h2 data-when="ja">早見表とコード対応表</h2>
+    <h2 data-when="en">Cheat sheet and chord maps</h2>
+    <p data-when="ja">印刷して手元に置ける早見表です。定番のコード進行が、位置番号で書いてあります。</p>
+    <p data-when="en">A printable cheat sheet: common chord progressions, written as pipe positions.</p>
+    <figure>
+      <img data-when="ja" src="assets/cheatsheet_ja.png" alt="コード進行 早見表">
+      <img data-when="en" src="assets/cheatsheet_en.png" alt="Chord progression cheat sheet">
+      <figcaption data-when="ja">早見表（日本語）。<a href="assets/cheatsheet_ja.png">PNG をダウンロード</a></figcaption>
+      <figcaption data-when="en">Cheat sheet. <a href="assets/cheatsheet_en.png">Download the PNG</a></figcaption>
+    </figure>
+
+    <h3 style="margin-top:34px" data-when="ja">12調ぶんの対応表</h3>
+    <h3 style="margin-top:34px" data-when="en">Chord maps, all twelve keys</h3>
+    <div class="maps">
+      <figure><img src="assets/chord_map_C_Am.png" alt="C / Am"><figcaption>C / Am</figcaption></figure>
+      <figure><img src="assets/chord_map_G_Em.png" alt="G / Em"><figcaption>G / Em</figcaption></figure>
+      <figure><img src="assets/chord_map_D_Bm.png" alt="D / Bm"><figcaption>D / Bm</figcaption></figure>
+      <figure><img src="assets/chord_map_A_Fsm.png" alt="A / F#m"><figcaption>A / F#m</figcaption></figure>
+      <figure><img src="assets/chord_map_E_Csm.png" alt="E / C#m"><figcaption>E / C#m</figcaption></figure>
+      <figure><img src="assets/chord_map_B_Gsm.png" alt="B / G#m"><figcaption>B / G#m</figcaption></figure>
+      <figure><img src="assets/chord_map_Fs_Dsm.png" alt="F# / D#m"><figcaption>F# / D#m</figcaption></figure>
+      <figure><img src="assets/chord_map_Db_Bbm.png" alt="Db / Bbm"><figcaption>D♭ / B♭m</figcaption></figure>
+      <figure><img src="assets/chord_map_Ab_Fm.png" alt="Ab / Fm"><figcaption>A♭ / Fm</figcaption></figure>
+      <figure><img src="assets/chord_map_Eb_Cm.png" alt="Eb / Cm"><figcaption>E♭ / Cm</figcaption></figure>
+      <figure><img src="assets/chord_map_Bb_Gm.png" alt="Bb / Gm"><figcaption>B♭ / Gm</figcaption></figure>
+      <figure><img src="assets/chord_map_F_Dm.png" alt="F / Dm"><figcaption>F / Dm</figcaption></figure>
     </div>
   </div>
 </section>
 
 <section id="how">
   <div class="wrap">
-    <h2 data-when="ja">しくみ</h2>
-    <h2 data-when="en">How it works</h2>
-    <p data-when="ja">8本の笛は「3度ずつ積み上げた音の列」です。隣り合う3本を切り取ると、必ずダイアトニックの三和音になります。C/Am のカードなら、足側から次の6和音が並びます（＊＝主音トニック I）。</p>
-    <p data-when="en">The eight pipes are a stack of thirds. Any three neighbours form a diatonic triad. On the C/Am card, sliding from the foot edge gives these six chords (＊ = tonic I).</p>
-    <div class="strip">
-      <div class="chip" style="background:var(--c-ii)"><b>Dm</b><span>ii · pos 1</span></div>
-      <div class="chip" style="background:var(--c-IV)"><b>F</b><span>IV · pos 2</span></div>
-      <div class="chip" style="background:var(--c-vi)"><b>Am</b><span>vi · pos 3</span></div>
-      <div class="chip" style="background:var(--c-I)"><b>C ＊</b><span>I · pos 4</span></div>
-      <div class="chip" style="background:var(--c-iii)"><b>Em</b><span>iii · pos 5</span></div>
-      <div class="chip" style="background:var(--c-V)"><b>G</b><span>V · pos 6</span></div>
+    <h2 data-when="ja">どうやって作ったか</h2>
+    <h2 data-when="en">How it was made</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="n" style="background:var(--c-ii)">1</span>
+        <h3 data-when="ja">管の長さを式にする</h3>
+        <h3 data-when="en">Turn pipe length into a formula</h3>
+        <p class="muted" data-when="ja">実際に刷って吹いた結果から、管長 L と周波数 f の関係を <code>f = A/(L+e)</code> で近似しました。これを逆に解けば、欲しい音から管長が決まります。</p>
+        <p class="muted" data-when="en">Printing and blowing real pipes gave a fit of <code>f = A/(L+e)</code> between length and frequency. Solve it backwards and a wanted note becomes a length.</p>
+      </div>
+      <div class="card">
+        <span class="n" style="background:var(--c-IV)">2</span>
+        <h3 data-when="ja">生成器がカードを吐く</h3>
+        <h3 data-when="en">A generator emits the card</h3>
+        <p class="muted" data-when="ja">Python（trimesh と manifold3d）で管を8本並べ、板と融合します。調を渡すだけで 3D モデルが出るので、12調ぶんを人手で設計せずに済みました。</p>
+        <p class="muted" data-when="en">Python (trimesh and manifold3d) lays out eight pipes and fuses them into the plate. Hand off a key, get a model — no hand-designing twelve of them.</p>
+      </div>
+      <div class="card">
+        <span class="n" style="background:var(--c-vi)">3</span>
+        <h3 data-when="ja">板は 0.5 mm でなければならない</h3>
+        <h3 data-when="en">The plate must be 0.5 mm</h3>
+        <p class="muted" data-when="ja">板の厚みは笛の床とぴったり同じ値です。ここを厚くすると共鳴管を侵食して、まったく鳴らなくなります。総厚は 4 mm。</p>
+        <p class="muted" data-when="en">The plate thickness exactly matches the floor of the pipes. Any thicker and it eats into the bore, and the card goes silent. Total thickness 4 mm.</p>
+      </div>
+      <div class="card">
+        <span class="n" style="background:var(--c-I)">4</span>
+        <h3 data-when="ja">度数を並べ替える</h3>
+        <h3 data-when="en">Reorder the degrees</h3>
+        <p class="muted" data-when="ja">音を 2・4・6・1・3・5・7・2 の度数順に並べると、隣り合う3本が常に三和音になります。これが「位置＝和音」を全カードで共通にしている仕掛けです。</p>
+        <p class="muted" data-when="en">Ordering the notes by scale degree 2·4·6·1·3·5·7·2 makes every three adjacent pipes a triad. That is what keeps position-equals-chord true on every card.</p>
+      </div>
+      <div class="card">
+        <span class="n" style="background:var(--c-iii)">5</span>
+        <h3 data-when="ja">吹いて測って戻す</h3>
+        <h3 data-when="en">Blow, measure, correct</h3>
+        <p class="muted" data-when="ja">刷ったカードを吹いて周波数を実測し、設計値との差から較正をやり直します。この循環でデッキ全体をピッチに乗せました。</p>
+        <p class="muted" data-when="en">Blow the printed card, measure the pitch, compare with the design, refit the calibration. That loop is what brought the whole deck into tune.</p>
+      </div>
+      <div class="card">
+        <span class="n" style="background:var(--c-V)">6</span>
+        <h3 data-when="ja">反りとの戦い</h3>
+        <h3 data-when="en">Fighting the warp</h3>
+        <p class="muted" data-when="ja">1プレートに2枚並べると必ず反りました。1層あたりの時間が倍になり、端が冷えて縮むためです。1枚ずつ刷るのが答えでした。</p>
+        <p class="muted" data-when="en">Two cards on a plate always warped: the time per layer doubles and the edges cool and shrink. Printing one at a time was the answer.</p>
+      </div>
     </div>
-    <div class="note" style="margin-top:18px">
-      <p style="margin:0" data-when="ja"><b>効きどころ：</b>メジャーの主要三和音（C・F・G）が、それぞれ平行短調（Am・Dm・Em）の隣にあります。だから1枚でメジャーと平行短調を地続きに行き来できます。</p>
-      <p style="margin:0" data-when="en"><b>The trick:</b> each primary major triad (C, F, G) sits right next to its relative minor (Am, Dm, Em). One card moves between a major key and its relative minor with the smallest slide.</p>
-    </div>
-    <figure class="two">
-      <div><img src="assets/chord_map_C_Am.png" alt="C / Am chord map"></div>
-      <div><img src="assets/chord_map_G_Em.png" alt="G / Em chord map"></div>
-    </figure>
-    <figcaption data-when="ja">どの3本がどの和音になるか（左：C/Am、右：G/Em）。棒の高さ＝笛の長さ＝音の高さ。</figcaption>
-    <figcaption data-when="en">Which three pipes make which chord (left: C/Am, right: G/Em). Bar height = pipe length = pitch.</figcaption>
   </div>
 </section>
 
-<section id="cheatsheet">
+<section id="licence">
   <div class="wrap">
-    <h2 data-when="ja">コード進行 早見表</h2>
-    <h2 data-when="en">Chord progression cheat sheet</h2>
-    <p class="muted" data-when="ja">王道進行・ポップ進行・ジャズ終止など、定番の進行を位置番号と実際の和音で示したデッキ同梱シートです。</p>
-    <p class="muted" data-when="en">The deck insert: common progressions (royal road, pop, jazz cadence, and more) shown by position number and actual chord.</p>
-    <figure>
-      <img data-when="ja" src="assets/cheatsheet_ja.png" alt="Chordika コード進行 早見表（日本語）">
-      <img data-when="en" src="assets/cheatsheet_en.png" alt="Chordika chord progression cheat sheet (English)">
-    </figure>
-  </div>
-</section>
-
-<section id="access">
-  <div class="wrap">
-    <h2 data-when="ja">だれでも触れる設計</h2>
-    <h2 data-when="en">Designed to be touchable</h2>
-    <ul class="clean">
-      <li data-when="ja"><b>調の切り欠き：</b>カードの足側の辺に、調ごとに位置の違う切り欠きを1つ。触れるだけでどの調かの見当がつきます。</li>
-      <li data-when="en"><b>Key notch:</b> a single notch on the foot edge, at a different position per key — feel which key you're holding.</li>
-      <li data-when="ja"><b>主音マーカー：</b>「ド」（主音）の笛の先に印。全カードで同じ行なので、そこを吹けばトニックです。</li>
-      <li data-when="en"><b>Tonic marker:</b> a mark by the tonic pipe, on the same row across every card — blow there for the tonic.</li>
-      <li data-when="ja"><b>ステンシル刻印：</b>調性名（例 C / Am）を貫通穴で刻印。</li>
-      <li data-when="en"><b>Stencil label:</b> the key name (e.g. C / Am) cut as through-holes.</li>
-    </ul>
-    <div class="warn" style="margin-top:18px">
-      <p style="margin:0" data-when="ja"><b>正直な限界：</b>減三和音（vii°）は無し。平行短調は自然的短音階の範囲。和声的短調のドミナントは白鍵に無く出せません（本物のダイアトニック・ハーモニカと同じ制約です）。</p>
-      <p style="margin:0" data-when="en"><b>Honest limits:</b> no diminished (vii°). The relative minor stays natural-minor; the harmonic-minor dominant isn't available (the same constraint as a real diatonic harmonica).</p>
+    <h2 data-when="ja">ライセンス</h2>
+    <h2 data-when="en">Licence</h2>
+    <p data-when="ja">この作品（STL データ、図版、本サイトの文章）は
+      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ja" rel="license">クリエイティブ・コモンズ 表示 - 非営利 - 改変禁止 4.0 国際（CC BY-NC-ND 4.0）</a>
+      で提供します。</p>
+    <p data-when="en">This work (STL data, figures, and the text of this site) is licensed under
+      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)</a>.</p>
+    <div class="grid">
+      <div class="card">
+        <h3 data-when="ja">できること</h3>
+        <h3 data-when="en">You may</h3>
+        <ul class="clean" data-when="ja">
+          <li>ダウンロードして<b>自分で印刷し、演奏する</b></li>
+          <li>そのままの形で<b>人に見せる・貸す・配る</b>（出典を示してください）</li>
+          <li>学校や勉強会で<b>非営利に使う</b></li>
+        </ul>
+        <ul class="clean" data-when="en">
+          <li>Download, <b>print and play</b> it yourself</li>
+          <li><b>Share it unchanged</b>, with credit</li>
+          <li>Use it <b>non-commercially</b>, for example in a class or a workshop</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 data-when="ja">できないこと</h3>
+        <h3 data-when="en">You may not</h3>
+        <ul class="clean" data-when="ja">
+          <li><b>商用利用</b>（印刷したものの販売、有料イベントでの提供など）</li>
+          <li><b>改変したデータの配布</b>（寸法を変えた版、他の作品への組み込みなど）</li>
+        </ul>
+        <ul class="clean" data-when="en">
+          <li><b>Commercial use</b> — selling prints, or offering them as part of a paid service</li>
+          <li><b>Distributing modified data</b> — resized versions, or this model built into another one</li>
+        </ul>
+      </div>
     </div>
+    <p class="muted" data-when="ja">別の条件で使いたい場合はご相談ください。改変そのものを手元で試すことまで禁じる意図はありませんが、<b>改変したデータを配布すること</b>はご遠慮ください。</p>
+    <p class="muted" data-when="en">If you would like different terms, please get in touch. The intent is not to stop you from tinkering privately — please just don't <b>redistribute</b> modified data.</p>
   </div>
 </section>
 
 <section id="status">
   <div class="wrap">
-    <h2 data-when="ja">いまの状態とこれから</h2>
-    <h2 data-when="en">Status &amp; roadmap</h2>
-    <ul class="clean roadmap">
-      <li data-when="ja"><span class="tagpill">done</span>全12調＋表紙を3Dプリントで実機化（クレジットカード大・触覚の切り欠き付き）。</li>
-      <li data-when="en"><span class="tagpill">done</span>All 12 keys plus a cover, 3D-printed and working (card-sized, with the tactile notch).</li>
-      <li data-when="ja"><span class="tagpill">done</span>コード進行チートシートと各調の対応図。</li>
-      <li data-when="en"><span class="tagpill">done</span>Chord-progression cheat sheet and per-key chord maps.</li>
-      <li data-when="ja"><span class="tagpill">next</span>印刷用のSTL／3MFデータの公開（このページで順次充実させます）。</li>
-      <li data-when="en"><span class="tagpill">next</span>Printable STL / 3MF data (to be added here over time).</li>
-      <li data-when="ja"><span class="tagpill">idea</span>ヘッド違いで音域を広げた「剛体移調」デッキ。</li>
-      <li data-when="en"><span class="tagpill">idea</span>A rigid-transposition deck using different head sizes for a wider range.</li>
+    <h2 data-when="ja">いまの状態</h2>
+    <h2 data-when="en">Where it stands</h2>
+    <ul class="clean" data-when="ja">
+      <li>Chordika 12調と Recorika 1枚は、実際に印刷して<b>すべて鳴ることを確認済み</b>です。</li>
+      <li>音程の追い込み（実測にもとづく較正の微調整）を進めています。</li>
+      <li>写真とデモ動画はこれから用意します。</li>
     </ul>
-    <p class="muted" data-when="ja">※このページは紹介が目的で、STLなどの印刷データはまだ置いていません。今後ここに追加していきます。</p>
-    <p class="muted" data-when="en">This page is an introduction; print data (STL, etc.) isn't posted yet and will be added here later.</p>
+    <ul class="clean" data-when="en">
+      <li>All twelve Chordika cards and the Recorika card have been printed and <b>confirmed to sound</b>.</li>
+      <li>Fine-tuning of the pitch calibration, based on measured frequencies, is in progress.</li>
+      <li>Photographs and a demo video are still to come.</li>
+    </ul>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p>Chordika — a 12-key deck of chord-whistle cards</p>
-    <p class="muted" data-when="ja">「AI笛作り」プロジェクトより。作者：栗原一貴</p>
-    <p class="muted" data-when="en">From the “AI whistle-making” project. By Kazutaka Kurihara.</p>
+    <p data-when="ja">Chordika &amp; Recorika — 栗原一貴（津田塾大学）「AI笛作り」プロジェクトより</p>
+    <p data-when="en">Chordika &amp; Recorika — from the "AI whistle-making" project by Kazutaka Kurihara</p>
+    <p><a href="https://github.com/qurihara/chordika">GitHub</a></p>
+    <p class="muted">CC BY-NC-ND 4.0</p>
   </div>
 </footer>
 
 <script>
-  function setLang(l){
-    document.documentElement.setAttribute('data-lang', l);
-    document.documentElement.setAttribute('lang', l==='ja'?'ja':'en');
-    document.getElementById('btn-ja').setAttribute('aria-pressed', l==='ja');
-    document.getElementById('btn-en').setAttribute('aria-pressed', l==='en');
-    try{ localStorage.setItem('chordika-lang', l); }catch(e){}
-  }
-  (function(){
-    var saved; try{ saved = localStorage.getItem('chordika-lang'); }catch(e){}
-    if(!saved){ saved = (navigator.language||'').toLowerCase().startsWith('ja') ? 'ja' : 'en'; }
-    setLang(saved);
-  })();
+function setLang(l){
+  document.documentElement.setAttribute('data-lang', l);
+  document.documentElement.setAttribute('lang', l);
+  document.getElementById('btn-ja').setAttribute('aria-pressed', l==='ja');
+  document.getElementById('btn-en').setAttribute('aria-pressed', l==='en');
+  try{ localStorage.setItem('chordika-lang', l); }catch(e){}
+}
+(function(){
+  var saved=null;
+  try{ saved=localStorage.getItem('chordika-lang'); }catch(e){}
+  if(!saved){ saved=(navigator.language||'').toLowerCase().indexOf('ja')===0 ? 'ja' : 'en'; }
+  setLang(saved);
+})();
 </script>
 </body>
 </html>

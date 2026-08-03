@@ -1,30 +1,74 @@
-# Chordika
+# Chordika &amp; Recorika
 
-**a 12-key deck of chord-whistle cards**
+**Card-sized 3D-printed whistles. Swap a card, change the key.**
 
-Chordika is a deck of credit-card-sized, 3D-printed chord whistles. Each card is one key:
-eight fipple pipes sit side by side, and blowing any three adjacent pipes in one breath
-sounds a tuned, consonant triad. Slide your mouth along the card and common chord
-progressions appear. Twelve cards cover every key, with an identical fingering, so swapping
-a card transposes.
+日本語版は [README.ja.md](README.ja.md) をご覧ください。
 
-## Project page
+Eight fipple pipes are 3D-printed into a credit-card-sized plate (85.6 × 54 × 4 mm).
 
-A visual introduction (Japanese / English) is published with GitHub Pages:
-**https://qurihara.github.io/chordika/**
+- **Chordika** — blow any three adjacent pipes in one breath and a tuned triad sounds.
+  Twelve cards cover every key, and the position-to-chord mapping is *identical* on all of
+  them, so the same hand motion transposes when you swap the card.
+- **Recorika** — the scale counterpart: one octave of a major scale, lowest pipe on the
+  left, highest on the right.
 
-## What's here
+No batteries, no sensors. Just plastic with holes in it.
 
-- `index.html` — the project introduction site.
-- `assets/` — the chord-progression cheat sheet (JA / EN) and per-key chord maps.
+**Project site: https://unryu.org/chordika/**
 
-Print data (STL / 3MF) is **not** posted yet; it will be added here over time.
+## The layout
 
-## Highlights
+On every Chordika card, the same pipes give the same chord function:
 
-- Three adjacent pipes → a tuned diatonic triad (not an over-blown beating effect).
-- Each primary major triad sits next to its relative minor, so one card covers a key and
-  its relative minor.
-- Tactile design: a per-key notch on the foot edge, a tonic marker, and a stencilled key label.
+| Pipes | 1·2·3 | 2·3·4 | 3·4·5 | **4·5·6** | 5·6·7 | 6·7·8 |
+|---|---|---|---|---|---|---|
+| Chord | ii | IV | vi | **I** | iii | V |
+| on C / Am | Dm | F | Am | **C** | Em | G |
+| on G / Em | Am | C | Em | **G** | Bm | D |
 
-From the "AI whistle-making" project by Kazutaka Kurihara.
+Each card therefore carries a major key *and* its relative minor. Only vii° (the
+diminished triad) is missing.
+
+This works because the notes are ordered by scale degree **2·4·6·1·3·5·7·2** rather than
+by pitch — which makes every three adjacent pipes a diatonic triad.
+
+## What's in this repository
+
+```
+index.html          project site (Japanese / English)
+stl/                print data — 12 Chordika cards + 1 Recorika card
+assets/             cheat sheets (JA/EN), chord maps for all 12 keys, overview figures
+```
+
+## Printing
+
+- **0.08 mm layers, 0.5 mm outer wall.** The pipe walls are thin; do not print coarse.
+- **No supports.** Print flat, as-is.
+- **One card per plate.** Two cards on one plate double the time per layer, the edges cool
+  and shrink, and the card warps. A brim alone will not stop it.
+- **Brim about 5 mm, brim-to-object gap 0.** With a gap the brim never fuses to the part
+  and holds nothing.
+- White PLA works well. Translucent PETG is beautiful — the bores show through the plate.
+
+Blow with about as much breath as a recorder. Too hard and the pipe jumps an octave.
+
+## How it was designed
+
+Pipe length and pitch were fitted from real printed-and-blown pipes as `f = A/(L+e)`.
+Solving it backwards turns a wanted note into a length, so a generator written in Python
+(trimesh + manifold3d) emits the whole card from a key name. The plate thickness is fixed
+at 0.5 mm — exactly the floor thickness of the pipes; any thicker and it eats into the
+bore and the card goes silent.
+
+## Licence
+
+[CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — see [LICENSE](LICENSE).
+
+**You may** print these for your own use, play them, and share them unchanged with credit,
+including non-commercially in classes and workshops.
+**You may not** use them commercially (selling prints, paid services) or distribute
+modified data. If you want different terms, please get in touch.
+
+---
+
+From the "AI whistle-making" project by Kazutaka Kurihara (Tsuda University).
