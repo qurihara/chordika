@@ -44,7 +44,8 @@ video/              short clips of the cards being played
 assets/             cheat sheets (JA/EN), chord maps for all 12 keys, photos and figures
 ```
 
-**Hear them:** the [project site](https://unryu.org/chordika/) has short clips — chords on
+**Hear them:** start with the [demo video on YouTube](https://www.youtube.com/watch?v=D532YUIkJ7o).
+The [project site](https://unryu.org/chordika/) also has short clips — chords on
 Chordika, the scale on Recorika, and a tune played on it.
 
 If you own a **Bambu Lab A1 mini**, the files in `3mf/` are already sliced with the

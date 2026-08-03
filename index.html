@@ -72,6 +72,9 @@
   figure{ margin:26px 0 0; }
   figure img{ width:100%; height:auto; border-radius:14px; border:1px solid var(--line); box-shadow:var(--shadow); background:#fff; }
   figure video{ width:100%; height:auto; border-radius:14px; border:1px solid var(--line); box-shadow:var(--shadow); background:#000; display:block; }
+  .yt{ position:relative; width:100%; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+    border:1px solid var(--line); box-shadow:var(--shadow); background:#000; }
+  .yt iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
   .sound{ display:inline-block; font-size:.78rem; color:var(--muted); border:1px solid var(--line);
     border-radius:999px; padding:2px 10px; margin-bottom:10px; }
   figcaption{ color:var(--muted); font-size:.9rem; margin-top:10px; text-align:center; }
@@ -148,6 +151,22 @@
       <img src="assets/photo_chordika_deck.jpg" alt="The twelve Chordika cards, printed in white PLA and bound with twine">
       <figcaption data-when="ja">白い PLA で刷った Chordika 12枚。ストラップ穴に紐を通して束ねられます。1枚 85.6 × 54 × 4 mm、約 8.5 g。</figcaption>
       <figcaption data-when="en">The twelve Chordika cards, printed in white PLA and bound through their strap holes. Each is 85.6 × 54 × 4 mm and about 8.5 g.</figcaption>
+    </figure>
+    <figure data-when="ja">
+      <div class="yt">
+        <iframe src="https://www.youtube-nocookie.com/embed/rL1GXocKnz4" title="Chordika &amp; Recorika デモ映像"
+          loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <figcaption>デモ映像。実際にどんな音が鳴るのか、どう持ち替えるのかはこちらをご覧ください。</figcaption>
+    </figure>
+    <figure data-when="en">
+      <div class="yt">
+        <iframe src="https://www.youtube-nocookie.com/embed/D532YUIkJ7o" title="Chordika &amp; Recorika demo video"
+          loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <figcaption>A short demo — what the cards sound like, and how swapping one changes the key.</figcaption>
     </figure>
   </div>
 </header>

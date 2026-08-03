@@ -44,7 +44,8 @@ video/              実際に吹いているところの短い動画
 assets/             早見表（日英）、12調ぶんの対応表、写真と図版
 ```
 
-**音を聴くには**、[紹介サイト](https://unryu.org/chordika/)に短い動画を置いてあります。
+**音を聴くには**、まず[デモ映像（YouTube）](https://www.youtube.com/watch?v=rL1GXocKnz4)を
+ご覧ください。[紹介サイト](https://unryu.org/chordika/)にも短い動画を置いてあります。
 Chordika の和音、Recorika の音階、そして音階で吹いた曲の3本です。
 
 **Bambu Lab A1 mini** をお使いなら、`3mf/` のファイルは下記の設定ですでにスライスして
