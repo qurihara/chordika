@@ -37,8 +37,14 @@ by pitch — which makes every three adjacent pipes a diatonic triad.
 ```
 index.html          project site (Japanese / English)
 stl/                print data — 12 Chordika cards + 1 Recorika card
+3mf/                pre-sliced files for the Bambu Lab A1 mini (PLA), same 13 cards
 assets/             cheat sheets (JA/EN), chord maps for all 12 keys, overview figures
 ```
+
+If you own a **Bambu Lab A1 mini**, the files in `3mf/` are already sliced with the
+settings below and can be sent straight to the printer. They assume Bambu PLA Basic;
+each card is about 8.5 g and takes roughly 1 h 15 min. For any other printer or
+filament, slice the STL yourself using the settings below.
 
 ## Printing
 
