@@ -40,8 +40,12 @@ vii°（減三和音）だけです。
 index.html          紹介サイト（日本語・英語）
 stl/                印刷データ — Chordika 12枚 ＋ Recorika 1枚
 3mf/                Bambu Lab A1 mini 用のスライス済みファイル（PLA）、同じ13枚
+video/              実際に吹いているところの短い動画
 assets/             早見表（日英）、12調ぶんの対応表、写真と図版
 ```
+
+**音を聴くには**、[紹介サイト](https://unryu.org/chordika/)に短い動画を置いてあります。
+Chordika の和音、Recorika の音階、そして音階で吹いた曲の3本です。
 
 **Bambu Lab A1 mini** をお使いなら、`3mf/` のファイルは下記の設定ですでにスライスして
 あるので、そのまま印刷に送れます。フィラメントは Bambu PLA Basic を前提としており、

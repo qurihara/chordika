@@ -71,6 +71,9 @@
 
   figure{ margin:26px 0 0; }
   figure img{ width:100%; height:auto; border-radius:14px; border:1px solid var(--line); box-shadow:var(--shadow); background:#fff; }
+  figure video{ width:100%; height:auto; border-radius:14px; border:1px solid var(--line); box-shadow:var(--shadow); background:#000; display:block; }
+  .sound{ display:inline-block; font-size:.78rem; color:var(--muted); border:1px solid var(--line);
+    border-radius:999px; padding:2px 10px; margin-bottom:10px; }
   figcaption{ color:var(--muted); font-size:.9rem; margin-top:10px; text-align:center; }
   .two{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
   @media (max-width:640px){ .two{ grid-template-columns:1fr; } }
@@ -192,6 +195,14 @@
     <p class="muted" data-when="ja">1枚に I・IV・V の主要三和音と ii・iii・vi が入ります。つまり<b>長調とその平行短調の和音がひと通り</b>そろいます。欠けるのは vii°（減三和音）だけです。</p>
     <p class="muted" data-when="en">Each card carries the primary triads I, IV, V plus ii, iii and vi — <b>a major key and its relative minor in one card</b>. Only vii° (the diminished triad) is missing.</p>
 
+    <span class="sound" data-when="ja">🔊 音が出ます</span>
+    <span class="sound" data-when="en">🔊 Sound on</span>
+    <figure style="margin-top:6px">
+      <video src="video/chordika-chords.mp4" poster="assets/poster_chordika.jpg" controls preload="none" playsinline></video>
+      <figcaption data-when="ja">実際に吹いているところ。口を横にすべらせると、和音が次々に変わります。</figcaption>
+      <figcaption data-when="en">Playing it. Slide your mouth along the card and the chords change one after another.</figcaption>
+    </figure>
+
     <figure>
       <img src="assets/overview_12keys.png" alt="All twelve Chordika cards">
       <figcaption data-when="ja">12枚で全調。管の長さだけが違い、並びの意味は共通です。</figcaption>
@@ -213,6 +224,21 @@
       <figcaption data-when="ja">Recorika（A♭ メジャー）。左の長い管が最低音の「ど」、右へ行くほど短く高くなります。</figcaption>
       <figcaption data-when="en">Recorika in A♭ major. The long pipe on the left is the lowest note; the pipes get shorter and higher towards the right.</figcaption>
     </figure>
+
+    <span class="sound" style="margin-top:24px" data-when="ja">🔊 音が出ます</span>
+    <span class="sound" style="margin-top:24px" data-when="en">🔊 Sound on</span>
+    <div class="two" style="margin-top:6px">
+      <figure style="margin:0">
+        <video src="video/recorika-octave.mp4" poster="assets/poster_recorika_octave.jpg" controls preload="none" playsinline></video>
+        <figcaption data-when="ja">左から順に吹くと、ドレミファソラシドが上がっていきます。</figcaption>
+        <figcaption data-when="en">Blown left to right: the scale climbs, do to do.</figcaption>
+      </figure>
+      <figure style="margin:0">
+        <video src="video/recorika-kirakira.mp4" poster="assets/poster_recorika_kirakira.jpg" controls preload="none" playsinline></video>
+        <figcaption data-when="ja">音階がそろっているので、曲も吹けます。</figcaption>
+        <figcaption data-when="en">With a full scale, you can play a tune.</figcaption>
+      </figure>
+    </div>
     <div class="note" data-when="ja">
       <b>なぜ A♭ メジャーなのか。</b>1オクターブには根音から数えて13半音ぶんの幅が要ります。この笛が安定して鳴る音域は14半音ぶんしかないので、根音に置ける音は3つだけでした。A♭ を選ぶと最長管が Chordika と同じ 64.2 mm に収まり、8本のうち7本は Chordika で実績のある管長そのままになります。ドを C にすると最高音が 4186 Hz となり、音域を大きく外れます。
     </div>
@@ -437,12 +463,12 @@
     <ul class="clean" data-when="ja">
       <li>Chordika 12調と Recorika 1枚は、実際に印刷して<b>すべて鳴ることを確認済み</b>です。</li>
       <li>音程の追い込み（実測にもとづく較正の微調整）を進めています。</li>
-      <li>写真とデモ動画はこれから用意します。</li>
+      <li>Recorika は現在 A♭ メジャーの1枚のみです。他の調も作れる設計にはなっています。</li>
     </ul>
     <ul class="clean" data-when="en">
       <li>All twelve Chordika cards and the Recorika card have been printed and <b>confirmed to sound</b>.</li>
       <li>Fine-tuning of the pitch calibration, based on measured frequencies, is in progress.</li>
-      <li>Photographs and a demo video are still to come.</li>
+      <li>Recorika currently exists only in A♭ major, though the design can generate other keys.</li>
     </ul>
   </div>
 </section>
