@@ -85,6 +85,12 @@
     border-radius:14px; padding:16px 18px; }
   .warn{ background:color-mix(in srgb,var(--c-IV) 12%, var(--panel)); border:1px solid color-mix(in srgb,var(--c-IV) 40%, var(--line));
     border-radius:14px; padding:16px 18px; }
+  .danger{ background:color-mix(in srgb,#e0483c 14%, var(--panel)); border:2px solid color-mix(in srgb,#e0483c 55%, var(--line));
+    border-radius:14px; padding:16px 18px; }
+  .danger b{ color:#c8352a; }
+  @media (prefers-color-scheme: dark){ .danger b{ color:#ff8f84; } }
+  :root[data-theme="dark"] .danger b{ color:#ff8f84; }
+  :root[data-theme="light"] .danger b{ color:#c8352a; }
 
   ul.clean{ padding-left:1.15em; margin:.4em 0; }
   ul.clean li{ margin:.3em 0; }
@@ -371,6 +377,13 @@
       <li>White PLA works well. Translucent PETG is beautiful too — you can see the bores through the plate.</li>
       <li><b>The box prints at ordinary 0.2 mm layers with no supports.</b> Both parts sit flat with their opening up; nothing overhangs.</li>
     </ul>
+
+    <div class="danger" style="margin-top:20px" data-when="ja">
+      <b>吹く前に、必ず表面の尖った箇所を取り除いてください。</b>刷り上がりには細かいバリや角が残ります。口を当てて吹く道具なので、そのままだと危険です。私は何度か口を切りそうになりました。カードの縁と、笛の吹き口まわりを指でなぞって確かめ、引っかかるところをやすりやカッターの背でならしてください。
+    </div>
+    <div class="danger" style="margin-top:20px" data-when="en">
+      <b>Remove any sharp spots before you blow into it.</b> A fresh print leaves fine burrs and sharp corners, and this is an instrument you put to your lips — as printed it is not safe. I have come close to cutting my mouth on one more than once. Run a finger along the card's edges and around the mouthpieces, and smooth anything that catches with a file or the back of a knife.
+    </div>
 
     <div class="warn" style="margin-top:20px" data-when="ja">
       <b>吹きかた。</b>口をすぼめ、リコーダーと同じくらいの息で。強く吹きすぎると1オクターブ上に飛びます。和音を出すときは、隣り合う3本にまたがるように口を当てて、一息で吹きます。

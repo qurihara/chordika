@@ -63,6 +63,12 @@ filament, slice the STL yourself using the settings below.
   and holds nothing.
 - White PLA works well. Translucent PETG is beautiful — the bores show through the plate.
 
+**Remove any sharp spots before you blow into it.** A fresh print leaves fine burrs and
+sharp corners, and this is an instrument you put to your lips — as printed it is not safe.
+I have come close to cutting my mouth on one more than once. Run a finger along the card's
+edges and around the mouthpieces, and smooth anything that catches with a file or the back
+of a knife.
+
 Blow with about as much breath as a recorder. Too hard and the pipe jumps an octave.
 
 ## Cover card and box
