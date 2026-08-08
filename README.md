@@ -50,7 +50,7 @@ video/              short clips of the cards being played
 assets/             cheat sheets (JA/EN), chord maps for all 12 keys, photos and figures
 ```
 
-**Hear them:** start with the [demo video on YouTube](https://www.youtube.com/watch?v=mi-en3c57SM).
+**Hear them:** start with the [demo video on YouTube](https://www.youtube.com/watch?v=5BZod5VixxM).
 The [project site](https://unryu.org/chordika/) also has short clips — chords on
 Chordika, the scale on Recorika, and a tune played on it.
 

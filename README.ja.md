@@ -50,7 +50,7 @@ video/              実際に吹いているところの短い動画
 assets/             早見表（日英）、12調ぶんの対応表、写真と図版
 ```
 
-**音を聴くには**、まず[デモ映像（YouTube）](https://www.youtube.com/watch?v=hUCn4gRVEYY)を
+**音を聴くには**、まず[デモ映像（YouTube）](https://www.youtube.com/watch?v=-cbyvgwa6VM)を
 ご覧ください。[紹介サイト](https://unryu.org/chordika/)にも短い動画を置いてあります。
 Chordika の和音、Recorika の音階、そして音階で吹いた曲の3本です。
 
