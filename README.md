@@ -22,24 +22,30 @@ The data is published, so anyone with a 3D printer can make the same thing. Each
 
 On every Chordika card, the same pipes give the same chord function:
 
-| Pipes | 1·2·3 | 2·3·4 | 3·4·5 | **4·5·6** | 5·6·7 | 6·7·8 |
+| Pipes | 1·2·3 | 2·3·4 | **3·4·5** | 4·5·6 | 5·6·7 | 6·7·8 |
 |---|---|---|---|---|---|---|
-| Chord | ii | IV | vi | **I** | iii | V |
-| on C / Am | Dm | F | Am | **C** | Em | G |
-| on G / Em | Am | C | Em | **G** | Bm | D |
+| Chord | V | iii | **I** | vi | IV | ii |
+| on C / Am | G | Em | **C** | Am | F | Dm |
+| on G / Em | D | Bm | **G** | Em | C | Am |
+
+Positions are counted from the left, with the windows facing up and the mouthpiece edge
+towards you. The tonic pipe is marked with a ＊ on the card.
 
 Each card therefore carries a major key *and* its relative minor. Only vii° (the
 diminished triad) is missing.
 
-This works because the notes are ordered by scale degree **2·4·6·1·3·5·7·2** rather than
-by pitch — which makes every three adjacent pipes a diatonic triad.
+This works because the notes follow the **degree chain 2·4·6·1·3·5·7·2** rather than pitch
+order, which makes every three adjacent pipes a diatonic triad. On the card that chain runs
+from the right-hand end towards the left.
 
 ## What's in this repository
 
 ```
 index.html          project site (Japanese / English)
 stl/                print data — 12 Chordika cards, 1 Recorika card, 1 cover, 2 box parts
+stl/inverted/       bonus: the 12 Chordika cards with the pipe order mirrored
 3mf/                pre-sliced files for the Bambu Lab A1 mini (PLA), the same 16 items
+3mf/inverted/       the same 12 inverted cards, pre-sliced
 video/              short clips of the cards being played
 assets/             cheat sheets (JA/EN), chord maps for all 12 keys, photos and figures
 ```
@@ -69,7 +75,9 @@ I have come close to cutting my mouth on one more than once. Run a finger along 
 edges and around the mouthpieces, and smooth anything that catches with a file or the back
 of a knife.
 
-Blow with about as much breath as a recorder. Too hard and the pipe jumps an octave.
+All eight mouthpieces sit in a straight line along one edge of the card: put your lips on
+that edge and slide along it. Blow with about as much breath as a recorder — too hard and
+the pipe jumps an octave.
 
 ## Cover card and box
 
