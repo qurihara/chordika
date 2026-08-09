@@ -10,7 +10,7 @@ Eight fipple pipes are 3D-printed into a credit-card-sized plate (85.6 × 54 × 
   Twelve cards cover every key, and the position-to-chord mapping is *identical* on all of
   them, so the same hand motion transposes when you swap the card.
 - **Recorika** — the scale counterpart: one octave of a major scale, lowest pipe on the
-  left, highest on the right.
+  left, highest on the right. Available in G, A♭ and A.
 
 The data is published, so anyone with a 3D printer can make the same thing. Each card is exactly credit-card sized, so it travels in a wallet or a card case.
 
@@ -42,9 +42,9 @@ from the right-hand end towards the left.
 
 ```
 index.html          project site (Japanese / English)
-stl/                print data — 12 Chordika cards, 1 Recorika card, 1 cover, 2 box parts
+stl/                print data — 12 Chordika cards, 3 Recorika cards, 1 cover, 2 box parts
 stl/inverted/       bonus: the 12 Chordika cards with the pipe order mirrored
-3mf/                pre-sliced files for the Bambu Lab A1 mini (PLA), the same 16 items
+3mf/                pre-sliced files for the Bambu Lab A1 mini (PLA), the same 18 items
 3mf/inverted/       the same 12 inverted cards, pre-sliced
 video/              short clips of the cards being played
 assets/             cheat sheets (JA/EN), chord maps for all 12 keys, photos and figures
