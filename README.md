@@ -11,6 +11,10 @@ Eight fipple pipes are 3D-printed into a credit-card-sized plate (85.6 × 54 × 
   them, so the same hand motion transposes when you swap the card.
 - **Recorika** — the scale counterpart: one octave of a major scale, lowest pipe on the
   left, highest on the right. Available in G, A♭ and A.
+- **Recorika Chromatic** and **Recorika Chromatic Square** — twelve pipes one semitone
+  apart (G#6 to G7). Slide your mouth along it for a chromatic run, wiggle it for a trill.
+  The Square packs the pipes closer into a square; pitch and tone are steadier on the
+  standard shape. (Added in October 2026.)
 
 The data is published, so anyone with a 3D printer can make the same thing. Each card is exactly credit-card sized, so it travels in a wallet or a card case.
 
@@ -42,9 +46,10 @@ from the right-hand end towards the left.
 
 ```
 index.html          project site (Japanese / English)
-stl/                print data — 12 Chordika cards, 3 Recorika cards, 1 cover, 2 box parts
+stl/                print data — 12 Chordika cards, 3 Recorika cards, 2 Recorika Chromatic shapes, 1 cover, 2 box parts
 stl/inverted/       bonus: the 12 Chordika cards with the pipe order mirrored
-3mf/                pre-sliced files for the Bambu Lab A1 mini (PLA), the same 18 items
+3mf/                pre-sliced files for the Bambu Lab A1 mini (PLA): the 18 Chordika, Recorika, cover and box items
+                    Recorika Chromatic: 3 files for the Bambu Lab H2D in white PETG (recorika_chromatic_*)
 3mf/inverted/       the same 12 inverted cards, pre-sliced
 video/              short clips of the cards being played
 assets/             cheat sheets (JA/EN), chord maps for all 12 keys, photos and figures
