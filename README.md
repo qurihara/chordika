@@ -12,7 +12,7 @@ Eight fipple pipes are 3D-printed into a credit-card-sized plate (85.6 × 54 × 
 - **Recorika** — the scale counterpart: one octave of a major scale, lowest pipe on the
   left, highest on the right. Available in G, A♭ and A.
 - **Recorika Chromatic** and **Recorika Chromatic Square** — twelve pipes one semitone
-  apart (G#6 to G7). Slide your mouth along it for a chromatic run, wiggle it for a trill.
+  apart (G#6 to G7). Slide the card sideways across your lips for a chromatic run, wiggle it for a trill.
   The Square packs the pipes closer into a square; pitch and tone are steadier on the
   standard shape. (Added in October 2026.)
 
@@ -80,8 +80,8 @@ I have come close to cutting my mouth on one more than once. Run a finger along 
 edges and around the mouthpieces, and smooth anything that catches with a file or the back
 of a knife.
 
-All eight mouthpieces sit in a straight line along one edge of the card: put your lips on
-that edge and slide along it. Blow with about as much breath as a recorder — too hard and
+All eight mouthpieces sit in a straight line along one edge of the card: keep your lips on
+that edge and slide the card sideways across them. Blow with about as much breath as a recorder — too hard and
 the pipe jumps an octave.
 
 ## Cover card and box
