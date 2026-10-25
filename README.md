@@ -16,7 +16,7 @@ Eight fipple pipes are 3D-printed into a credit-card-sized plate (85.6 × 54 × 
   The Square packs the pipes closer into a square; pitch and tone are steadier on the
   standard shape. (Added in October 2026.)
 
-The data is published, so anyone with a 3D printer can make the same thing. Each Chordika and Recorika card is exactly credit-card sized, so it travels in a wallet or a card case. The two Recorika Chromatic shapes are larger — the shorter side is 64.5 mm — and will not fit in a wallet's card slot.
+The data is published, so anyone with a 3D printer can make the same thing. Each Chordika and Recorika card is exactly credit-card sized, so it travels in a wallet or a card case. The two Recorika Chromatic models are larger — the shorter side is 64.5 mm — and will not fit in a wallet's card slot.
 
 ![The twelve Chordika cards](assets/photo_chordika_deck.jpg)
 
