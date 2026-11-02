@@ -15,8 +15,10 @@ For English, see [README.md](README.md).
   半音階のカードです（G#6〜G7）。唇を当てたまま笛を左右に滑らせるだけで半音階が鳴り、
   小さく揺らせばトリルになります。Square は12本の間隔を詰めて正方形にした形です。音程と音質は通常の形のほうが
   安定します（2026年10月に追加）。
+- **Recorika Chromatic Tiny** — いちばん小さい Recorika Chromatic です。下に板を敷かず、細い笛12本だけを
+  束ねました（66.0 × 53.8 × 4 mm）。最低音（G#6）をきれいに響かせるには少しコツが要ります（2026年11月に追加）。
 
-データを公開しているので、3Dプリンタがあれば誰でも同じものを刷れます。Chordika と Recorika の1枚は、クレジットカードとまったく同じ大きさなので、財布やカードケースに入れて持ち歩けます。Recorika Chromatic の2つのモデルは、短いほうの辺が 64.5 mm あってカードより大きいので、財布のカード入れには収まりません。
+データを公開しているので、3Dプリンタがあれば誰でも同じものを刷れます。Chordika と Recorika の1枚は、クレジットカードとまったく同じ大きさなので、財布やカードケースに入れて持ち歩けます。Recorika Chromatic と Recorika Chromatic Square は、短いほうの辺が 64.5 mm あってカードより大きいので、財布のカード入れには収まりません。Recorika Chromatic Tiny の外形は、クレジットカードの内側に収まります。
 
 ![Chordika 12枚](assets/photo_chordika_deck.jpg)
 
@@ -46,10 +48,10 @@ vii°（減三和音）だけです。
 
 ```
 index.html          紹介サイト（日本語・英語）
-stl/                印刷データ — Chordika 12枚、Recorika 3枚、Recorika Chromatic 2つの形、表紙1枚、箱2部品
+stl/                印刷データ — Chordika 12枚、Recorika 3枚、Recorika Chromatic 3つの形、表紙1枚、箱2部品
 stl/inverted/       おまけ。笛の並びを左右逆にした Chordika 12枚
 3mf/                Bambu Lab A1 mini 用のスライス済みファイル（PLA）、Chordika・Recorika・表紙・箱の18点
-                    Recorika Chromatic は Bambu Lab H2D 用（白い PETG）の3点（recorika_chromatic_*）
+                    Recorika Chromatic は Bambu Lab H2D 用（白い PETG）の4点（recorika_chromatic_*）
 3mf/inverted/       同じく逆並び版 12枚
 video/              実際に吹いているところの短い動画
 assets/             早見表（日英）、12調ぶんの対応表、写真と図版
