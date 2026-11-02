@@ -14,10 +14,8 @@ Eight fipple pipes are 3D-printed into a credit-card-sized plate (85.6 × 54 × 
 - **Recorika Chromatic** and **Recorika Chromatic Square** — twelve pipes one semitone
   apart (G#6 to G7). Slide the card sideways across your lips for a chromatic run, wiggle it for a trill.
   The Square packs the pipes closer into a square; pitch and tone are steadier on the
-  standard shape. (Added in October 2026.)
-- **Recorika Chromatic Tiny** — the smallest Recorika Chromatic: no base plate, just twelve slim
-  pipes bundled side by side (66.0 × 53.8 × 4 mm). Getting the lowest pipe (G#6) to ring takes a little knack.
-  (Added in November 2026.)
+  standard model. (Added in October 2026.)
+- **Recorika Chromatic Tiny** — the smallest Recorika Chromatic (66.0 × 53.8 × 4 mm). (Added in November 2026.)
 
 The data is published, so anyone with a 3D printer can make the same thing. Each Chordika and Recorika card is exactly credit-card sized, so it travels in a wallet or a card case. Recorika Chromatic and Recorika Chromatic Square are larger — the shorter side is 64.5 mm — and will not fit in a wallet's card slot. The outline of Recorika Chromatic Tiny fits inside a credit card's.
 
@@ -49,7 +47,7 @@ from the right-hand end towards the left.
 
 ```
 index.html          project site (Japanese / English)
-stl/                print data — 12 Chordika cards, 3 Recorika cards, 3 Recorika Chromatic shapes, 1 cover, 2 box parts
+stl/                print data — 12 Chordika cards, 3 Recorika cards, 3 Recorika Chromatic models, 1 cover, 2 box parts
 stl/inverted/       bonus: the 12 Chordika cards with the pipe order mirrored
 3mf/                pre-sliced files for the Bambu Lab A1 mini (PLA): the 18 Chordika, Recorika, cover and box items
                     Recorika Chromatic: 4 files for the Bambu Lab H2D in white PETG (recorika_chromatic_*)
