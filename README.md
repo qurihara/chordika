@@ -15,7 +15,7 @@ Eight fipple pipes are 3D-printed into a credit-card-sized plate (85.6 × 54 × 
   apart (G#6 to G7). Slide the card sideways across your lips for a chromatic run, wiggle it for a trill.
   The Square packs the pipes closer into a square; pitch and tone are steadier on the
   standard model. (Added in October 2026.)
-- **Recorika Chromatic Tiny** — the smallest Recorika Chromatic (66.0 × 53.8 × 4 mm). (Added in November 2026.)
+- **Recorika Chromatic Tiny** — the smallest Recorika Chromatic (66.0 × 53.8 × 4 mm). (Added in November 2026.) Its lowest note (G#6) does not sound reliably, so if you want to play properly, use Recorika Chromatic Square or the standard Recorika Chromatic.
 
 The data is published, so anyone with a 3D printer can make the same thing. Each Chordika and Recorika card is exactly credit-card sized, so it travels in a wallet or a card case. Recorika Chromatic and Recorika Chromatic Square are larger — the shorter side is 64.5 mm — and will not fit in a wallet's card slot. The outline of Recorika Chromatic Tiny fits inside a credit card's.
 

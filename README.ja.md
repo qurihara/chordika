@@ -15,7 +15,7 @@ For English, see [README.md](README.md).
   半音階のカードです（G#6〜G7）。唇を当てたまま笛を左右に滑らせるだけで半音階が鳴り、
   小さく揺らせばトリルになります。Square は12本の間隔を詰めて正方形にしたモデルです。音程と音質は通常のモデルのほうが
   安定します（2026年10月に追加）。
-- **Recorika Chromatic Tiny** — いちばん小さい Recorika Chromatic です（66.0 × 53.8 × 4 mm、2026年11月に追加）。
+- **Recorika Chromatic Tiny** — いちばん小さい Recorika Chromatic です（66.0 × 53.8 × 4 mm、2026年11月に追加）。いちばん低い音（G#6）の鳴りが不安定なので、しっかり演奏したい方は Recorika Chromatic Square か、通常の Recorika Chromatic をお使いください。
 
 データを公開しているので、3Dプリンタがあれば誰でも同じものを刷れます。Chordika と Recorika の1枚は、クレジットカードとまったく同じ大きさなので、財布やカードケースに入れて持ち歩けます。Recorika Chromatic と Recorika Chromatic Square は、短いほうの辺が 64.5 mm あってカードより大きいので、財布のカード入れには収まりません。Recorika Chromatic Tiny の外形は、クレジットカードの内側に収まります。
 
