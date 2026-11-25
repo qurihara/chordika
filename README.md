@@ -64,6 +64,8 @@ The cards print in **PLA or PETG**. Pre-sliced 3mf files are in `3mf/`: PLA for 
 Bambu Lab A1 mini (use the `_a1mini_pla_2026-11` files where there is one) and PETG for
 the Bambu Lab H2D. For any other printer, slice the STL with the settings below.
 
+Chordika and Recorika are also on MakerWorld: https://makerworld.com/en/models/3681300-chordika-recorika-chord-scale-card-whistles
+
 ## Printing
 
 - **0.08 mm layers (0.12 mm first layer), 0.5 mm outer wall.** The pipe walls are thin; do not print coarse.

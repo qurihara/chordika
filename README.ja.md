@@ -64,6 +64,8 @@ Chordika の和音、Recorika の音階、そして音階で吹いた曲の3本�
 PLA は Bambu Lab A1 mini 用（`_a1mini_pla_2026-11` のファイルがあればそちら）、PETG は
 Bambu Lab H2D 用です。他のプリンタをお使いの場合は、下記の設定で STL をスライスしてください。
 
+Chordika と Recorika は MakerWorld でも公開しています：https://makerworld.com/ja/models/3681300-chordika-recorika-chord-scale-card-whistles
+
 ## 印刷のしかた
 
 - **層の高さ 0.08 mm（最初の層だけ 0.12 mm）、外壁の線幅 0.5 mm。** 笛の壁が薄いので、粗くしないでください。
