@@ -49,8 +49,11 @@ from the right-hand end towards the left.
 index.html          project site (Japanese / English)
 stl/                print data — 12 Chordika cards, 3 Recorika cards, 3 Recorika Chromatic models, 1 cover, 2 box parts
 stl/inverted/       bonus: the 12 Chordika cards with the pipe order mirrored
-3mf/                pre-sliced files for the Bambu Lab A1 mini (PLA): the 18 Chordika, Recorika, cover and box items
-                    Recorika Chromatic: 4 files for the Bambu Lab H2D in white PETG (recorika_chromatic_*)
+3mf/                pre-sliced files
+                    *_a1mini_pla_2026-11: recommended — Bambu Lab A1 mini, PLA Basic, the November 2026
+                      settings that played (12 Chordika keys, Recorika A♭, Recorika Chromatic)
+                    *_a1mini_pla: the older August 2026 A1 mini settings (Chordika, Recorika G/A♭/A, cover, box)
+                    recorika_chromatic_*_h2d_petg: 4 files for the Bambu Lab H2D in white PETG
 3mf/inverted/       the same 12 inverted cards, pre-sliced
 video/              short clips of the cards being played
 assets/             cheat sheets (JA/EN), chord maps for all 12 keys, photos and figures
@@ -60,19 +63,34 @@ assets/             cheat sheets (JA/EN), chord maps for all 12 keys, photos and
 The [project site](https://unryu.org/chordika/) also has short clips — chords on
 Chordika, the scale on Recorika, and a tune played on it.
 
-If you own a **Bambu Lab A1 mini**, the files in `3mf/` are already sliced with the
-settings below and can be sent straight to the printer. They assume Bambu PLA Basic;
-each card is about 8.5 g and takes roughly 1 h 15 min. For any other printer or
-filament, slice the STL yourself using the settings below.
+If you own a **Bambu Lab A1 mini**, start with the files ending in `_a1mini_pla_2026-11`
+in `3mf/`. In November 2026, Chordika (A♭ / Fm), Recorika (A♭) and Recorika Chromatic were
+printed on an A1 mini in white PLA (Bambu PLA Basic) and every pipe sounded; these files are
+sliced with exactly those settings and can be sent straight to the printer. A Chordika or
+Recorika card is about 8 g and 2 h 20 min; Recorika Chromatic is about 12 g and 3 h 10 min.
+The other eleven Chordika keys use the same settings but have not yet been printed with them.
+Recorika in G and A has not been printed with them either, so only the STL and the older
+August 2026 3mf (`_a1mini_pla`) are provided for those two.
+
+The older `_a1mini_pla` files (August 2026) are kept as they were: 0.2 mm first layer,
+30 mm/s outer walls and a 5 mm brim with gap 0, about 1 h 25 min per card.
+For any other printer or filament, slice the STL yourself using the settings below.
 
 ## Printing
 
-- **0.08 mm layers, 0.5 mm outer wall.** The pipe walls are thin; do not print coarse.
+These are the settings with which the cards played on an A1 mini in white PLA (November 2026).
+They start from the Bambu Studio system preset `0.12mm Fine @BBL A1M`.
+
+- **0.08 mm layers (0.12 mm first layer), 0.5 mm outer wall.** The pipe walls are thin; do not print coarse.
+- **Slow walls:** 15 mm/s outer, 25 mm/s inner.
+- **Nozzle 220 °C, bed 65 °C (Textured PEI Plate), part-cooling fan at most 80%.**
 - **No supports.** Print flat, as-is.
 - **One card per plate.** Two cards on one plate double the time per layer, the edges cool
   and shrink, and the card warps. A brim alone will not stop it.
-- **Brim about 5 mm, brim-to-object gap 0.** With a gap the brim never fuses to the part
-  and holds nothing.
+- **Brim 8 mm, brim-to-object gap 0.1 mm.**
+- Recorika Chromatic Square printed on an A1 mini in white PLA had a weak second-lowest note;
+  for the Square, the H2D files in white PETG are recommended (slow the internal solid infill
+  to about 70 mm/s).
 - White PLA works well. Translucent PETG is beautiful — the bores show through the plate.
 
 **Remove any sharp spots before you blow into it.** A fresh print leaves fine burrs and
